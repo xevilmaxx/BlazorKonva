@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using BlazorKonva.KonvaClasses;
+using BlazorKonva.KonvaClasses.Stage;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -43,6 +45,16 @@ namespace BlazorKonva
             await BKW.Init();
 
             //_ = await ExampleJsInterop.CreateStage(ContainerId);
+
+            var stage = await new Stage()
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new StageConfigsDTO()
+                {
+                    ContainerId = ContainerId,
+                    Width = 100,
+                    Height = 100
+                })
+                .Build();
 
             await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.CreateStage", ContainerId, 100, 100);
 

@@ -24,13 +24,20 @@ window.ExampleJsInterop = {
             height: window.innerHeight,
         });
         console.log("Stage Inited");
-        return true;
+        return this.stage.id();
+    },
+
+    CreateStageFromJson: function (Configs) {
+        //console.log(Configs);
+        this.stage = new Konva.Stage(JSON.parse(Configs));
+        return this.stage.id();
+        //return this.stage;
     },
 
     AddLayer: function () {
         this.layer = new Konva.Layer();
         this.stage.add(this.layer);
-        return this.layer;
+        return this.layer.id();
     },
 
     AddBox: function () {

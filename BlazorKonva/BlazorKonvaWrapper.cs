@@ -50,6 +50,11 @@ namespace BlazorKonva
         public async ValueTask<bool> Init()
         {
 
+            //sometimes browser need explicit update in order to update imported javascript
+            //CTRL+SHIFT+R in browser than re-run (becouse that fucking import is cached)
+            //Sometimes you simply need to be sure you have saved altered .js file before run
+            //becouse it wont be auto-saved by visual studio on normal run
+            //overloads of functions are also better to avoid 
             if(IsIntermediateLibImported == false)
             {
                 await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js");
