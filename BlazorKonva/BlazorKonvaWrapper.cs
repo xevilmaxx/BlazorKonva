@@ -13,7 +13,7 @@ namespace BlazorKonva
     // This class can be registered as scoped DI service and then injected into Blazor
     // components for use.
 
-    public class ExampleJsInterop : IAsyncDisposable
+    public class BlazorKonvaWrapper : IAsyncDisposable
     {
 
         public IJSRuntime jsRuntime { get; private set; }
@@ -24,7 +24,7 @@ namespace BlazorKonva
         private bool IsExternalLibImported { get; set; }
         private bool IsIntermediateLibImported { get; set; }
 
-        public ExampleJsInterop(IJSRuntime jsRuntime)
+        public BlazorKonvaWrapper(IJSRuntime jsRuntime)
         {
             this.jsRuntime = jsRuntime;
 
@@ -44,7 +44,7 @@ namespace BlazorKonva
         }
 
         /// <summary>
-        /// To use if scripts werent imported manually
+        /// To use if scripts werent imported manually, works good if invoked inside OnAfterRenderAsync(...) method
         /// </summary>
         /// <returns></returns>
         public async ValueTask<bool> Init()

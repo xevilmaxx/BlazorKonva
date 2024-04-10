@@ -8,7 +8,7 @@ namespace BlazorKonvaTest.Components.Pages
     {
 
         [Inject]
-        private ExampleJsInterop ExampleJsInterop { get; set; }
+        private BlazorKonvaWrapper ExampleJsInterop { get; set; }
 
         protected override void OnInitialized()
         {

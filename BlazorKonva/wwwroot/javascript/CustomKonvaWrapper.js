@@ -1,31 +1,9 @@
-// This is a JavaScript module that is loaded on demand. It can export any number of
-// functions, and may import other JavaScript modules if required.
-
-//export function showPrompt(message) {
-//  return prompt(message, 'Type anything here');
-//}
-
-//export function CreateStage()
-//{
-
-//}
-
-//export function CreateStage(ContainerId, Width, Height) {
-//    var stage = new Konva.Stage({
-//        container: 'container',
-//        width: window.innerWidth,
-//        height: window.innerHeight,
-//    });
-//    return true;
-//}
-
-// This is a JavaScript module that is loaded on demand. It can export any number of
-// functions, and may import other JavaScript modules if required.
 window.ExampleJsInterop = {
 
     stage: null,
     layer: null,
     box: null,
+
     showPrompt: function (message) {
         return prompt(message, 'Type anything here');
     },
@@ -73,12 +51,12 @@ window.ExampleJsInterop = {
         this.box.on('mouseover', function () {
             //mouseover(true);
             //
-            //DotNet.invokeMethodAsync('LibKonvaWrapper', 'OnMouseOver');
+            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOver');
             dotNetObject.invokeMethodAsync('OnMouseOver');
         });
         this.box.on('mouseout', function () {
             //mouseout(true);
-            //DotNet.invokeMethodAsync('LibKonvaWrapper', 'OnMouseOut');
+            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOut');
             dotNetObject.invokeMethodAsync('OnMouseOut');
         });
     }

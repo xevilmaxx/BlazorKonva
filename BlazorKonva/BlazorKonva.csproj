@@ -16,13 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\javascript\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\exampleJsInterop2.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
     <Content Update="wwwroot\javascript\konva.min.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>

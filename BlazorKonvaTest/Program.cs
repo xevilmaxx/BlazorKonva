@@ -14,7 +14,7 @@ namespace BlazorKonvaTest
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
 
-            builder.Services.AddScoped<ExampleJsInterop>();
+            builder.Services.AddScoped<BlazorKonvaWrapper>();
 
             #region AspNetCore_Specials
 
