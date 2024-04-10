@@ -28,13 +28,13 @@ namespace BlazorKonva
         {
             this.jsRuntime = jsRuntime;
 
-            //_ = jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorKonva/exampleJsInterop2.js");
+            //_ = jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js");
 
             //moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-            //    "import", "./_content/BlazorKonva/exampleJsInterop2.js").AsTask());
+            //    "import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js").AsTask());
 
 
-            //_ = jsRuntime.InvokeVoidAsync("eval", jsRuntime.InvokeAsync<string>("fetch", "./_content/BlazorKonva/exampleJsInterop2.js"));
+            //_ = jsRuntime.InvokeVoidAsync("eval", jsRuntime.InvokeAsync<string>("fetch", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js"));
 
             //_ = jsRuntime.InvokeVoidAsync("eval", jsRuntime.InvokeAsync<string>("fetch", "./_content/BlazorKonva/javascript/konva.min.js"));
 
@@ -52,7 +52,7 @@ namespace BlazorKonva
 
             if(IsIntermediateLibImported == false)
             {
-                await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/exampleJsInterop2.js");
+                await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js");
                 IsIntermediateLibImported = true;
             }
 
