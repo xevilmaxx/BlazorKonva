@@ -1,4 +1,6 @@
 ﻿using BlazorKonva.KonvaClasses;
+using BlazorKonva.KonvaClasses.Layer;
+using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -37,7 +39,7 @@ namespace BlazorKonva
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
 
-            if(firstRender == false)
+            if (firstRender == false)
             {
                 return;
             }
@@ -51,19 +53,39 @@ namespace BlazorKonva
                 .SetConfigs(new StageConfigsDTO()
                 {
                     ContainerId = ContainerId,
-                    Width = 100,
-                    Height = 100
+                    //Width = 500,
+                    //Height = 500
                 })
                 .Build();
 
-            await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.CreateStage", ContainerId, 100, 100);
+            var layer = await new Layer()
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new LayerConfigsDTO())
+                .Build();
 
-            await AddLayer();
+            var rect = await new Rect()
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new RectConfigsDTO()
+                {
+                    X = 50,
+                    Y = 50,
+                    Width = 100,
+                    Height = 50,
+                    Fill = "#00D2FF",
+                    Stroke = "black",
+                    StrokeWidth = 4,
+                    Draggable = true
+                })
+                .Build();
 
-            await AddBox();
+            //await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.CreateStage", ContainerId, 100, 100);
 
-            var JSHandler = DotNetObjectReference.Create(this);
-            await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.HandleBox", JSHandler);
+            //await AddLayer();
+
+            //await AddBox();
+
+            //var JSHandler = DotNetObjectReference.Create(this);
+            //await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.HandleBox", JSHandler);
 
         }
 

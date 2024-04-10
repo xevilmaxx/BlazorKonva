@@ -29,7 +29,16 @@ window.ExampleJsInterop = {
 
     CreateStageFromJson: function (Configs) {
         //console.log(Configs);
-        this.stage = new Konva.Stage(JSON.parse(Configs));
+        var parsedConfigs = JSON.parse(Configs)
+
+        if (!parsedConfigs.width || parsedConfigs.width <= 0) {
+            parsedConfigs.width = window.innerWidth;
+        }
+        if (!parsedConfigs.height || parsedConfigs.height <= 0) {
+            parsedConfigs.height = window.innerHeight;
+        }
+
+        this.stage = new Konva.Stage(parsedConfigs);
         return this.stage.id();
         //return this.stage;
     },
@@ -38,6 +47,38 @@ window.ExampleJsInterop = {
         this.layer = new Konva.Layer();
         this.stage.add(this.layer);
         return this.layer.id();
+    },
+
+    CreateLayerFromJson: function (Configs) {
+        //console.log(Configs);
+        this.layer = new Konva.Layer(JSON.parse(Configs));
+
+        this.stage.add(this.layer);
+
+        return this.layer.id();
+        //return this.stage;
+    },
+
+    CreateRectFromJson: function (dotNetObject, Configs) {
+        //console.log(Configs);
+        this.box = new Konva.Rect(JSON.parse(Configs));
+
+        this.layer.add(this.box);
+
+        this.box.on('mouseover', function () {
+            //mouseover(true);
+            //
+            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOver');
+            dotNetObject.invokeMethodAsync('OnMouseOver');
+        });
+        this.box.on('mouseout', function () {
+            //mouseout(true);
+            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOut');
+            dotNetObject.invokeMethodAsync('OnMouseOut');
+        });
+
+        return this.box.id();
+        //return this.stage;
     },
 
     AddBox: function () {
