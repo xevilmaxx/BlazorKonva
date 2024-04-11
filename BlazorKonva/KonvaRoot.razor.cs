@@ -1,4 +1,5 @@
-﻿using BlazorKonva.KonvaClasses.Layer;
+﻿using BlazorKonva.KonvaClasses.Circle;
+using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.AspNetCore.Components;
@@ -172,6 +173,24 @@ namespace BlazorKonva
             });
 
             await rect.ListenForEvents();
+
+            var circle = await new KonvaCircle()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaCircleConfigsDTO()
+                {
+                    X = 100,
+                    Y = 100,
+                    Radius = 70,
+                    Fill = "#00D2FF",
+                    Stroke = "black",
+                    StrokeWidth = 4,
+                    Draggable = true,
+                    Opacity = 0.5
+                })
+                .Build();
+
+            await layer.AddNode(circle);
 
         }
 

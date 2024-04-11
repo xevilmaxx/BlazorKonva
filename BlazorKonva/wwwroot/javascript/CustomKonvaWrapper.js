@@ -132,7 +132,7 @@ window.CustomKonvaWrapper = {
 
     CreateAnimationFromJson: function (Configs) {
         
-        var animation = new Konva.Animation(Configs);
+        var animation = new Konva.Animation(JSON.parse(Configs));
 
         this.nodes.push(animation);
 
@@ -142,7 +142,7 @@ window.CustomKonvaWrapper = {
 
     CreateArcFromJson: function (Configs) {
 
-        var node = new Konva.Arc(Configs);
+        var node = new Konva.Arc(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -152,7 +152,7 @@ window.CustomKonvaWrapper = {
 
     CreateArrowFromJson: function (Configs) {
 
-        var node = new Konva.Arrow(Configs);
+        var node = new Konva.Arrow(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -162,7 +162,7 @@ window.CustomKonvaWrapper = {
 
     CreateCanvasFromJson: function (Configs) {
 
-        var node = new Konva.Canvas(Configs);
+        var node = new Konva.Canvas(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -172,7 +172,7 @@ window.CustomKonvaWrapper = {
 
     CreateCircleFromJson: function (Configs) {
 
-        var node = new Konva.Circle(Configs);
+        var node = new Konva.Circle(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -182,7 +182,7 @@ window.CustomKonvaWrapper = {
 
     CreateContainerFromJson: function (Configs) {
 
-        var node = new Konva.Container(Configs);
+        var node = new Konva.Container(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -192,7 +192,7 @@ window.CustomKonvaWrapper = {
 
     CreateContextFromJson: function (Configs) {
 
-        var node = new Konva.Context(Configs);
+        var node = new Konva.Context(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -202,7 +202,7 @@ window.CustomKonvaWrapper = {
 
     CreateEllipseFromJson: function (Configs) {
 
-        var node = new Konva.Ellipse(Configs);
+        var node = new Konva.Ellipse(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -212,7 +212,7 @@ window.CustomKonvaWrapper = {
 
     CreateFastLayerFromJson: function (Configs) {
 
-        var node = new Konva.FastLayer(Configs);
+        var node = new Konva.FastLayer(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -222,7 +222,7 @@ window.CustomKonvaWrapper = {
 
     CreateGroupFromJson: function (Configs) {
 
-        var node = new Konva.Group(Configs);
+        var node = new Konva.Group(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -232,7 +232,7 @@ window.CustomKonvaWrapper = {
 
     CreateImageFromJson: function (Configs) {
 
-        var node = new Konva.Image(Configs);
+        var node = new Konva.Image(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -242,7 +242,7 @@ window.CustomKonvaWrapper = {
 
     CreateLabelFromJson: function (Configs) {
 
-        var node = new Konva.Label(Configs);
+        var node = new Konva.Label(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -264,7 +264,7 @@ window.CustomKonvaWrapper = {
 
     CreateLineFromJson: function (Configs) {
 
-        var node = new Konva.Line(Configs);
+        var node = new Konva.Line(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -274,7 +274,7 @@ window.CustomKonvaWrapper = {
 
     CreateNodeFromJson: function (Configs) {
 
-        var node = new Konva.Node(Configs);
+        var node = new Konva.Node(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -284,7 +284,7 @@ window.CustomKonvaWrapper = {
 
     CreatePathFromJson: function (Configs) {
 
-        var node = new Konva.Path(Configs);
+        var node = new Konva.Path(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -306,7 +306,7 @@ window.CustomKonvaWrapper = {
 
     CreateRegularPolygonFromJson: function (Configs) {
 
-        var node = new Konva.RegularPolygon(Configs);
+        var node = new Konva.RegularPolygon(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -316,7 +316,7 @@ window.CustomKonvaWrapper = {
 
     CreateRingFromJson: function (Configs) {
 
-        var node = new Konva.Ring(Configs);
+        var node = new Konva.Ring(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -326,7 +326,7 @@ window.CustomKonvaWrapper = {
 
     CreateShapeFromJson: function (Configs) {
 
-        var node = new Konva.Shape(Configs);
+        var node = new Konva.Shape(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -336,7 +336,7 @@ window.CustomKonvaWrapper = {
 
     CreateSpriteFromJson: function (Configs) {
 
-        var node = new Konva.Sprite(Configs);
+        var node = new Konva.Sprite(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -366,7 +366,7 @@ window.CustomKonvaWrapper = {
 
     CreateStarFromJson: function (Configs) {
 
-        var node = new Konva.Star(Configs);
+        var node = new Konva.Star(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -376,7 +376,7 @@ window.CustomKonvaWrapper = {
 
     CreateTagFromJson: function (Configs) {
 
-        var node = new Konva.Tag(Configs);
+        var node = new Konva.Tag(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -386,7 +386,7 @@ window.CustomKonvaWrapper = {
 
     CreateTextFromJson: function (Configs) {
 
-        var node = new Konva.Text(Configs);
+        var node = new Konva.Text(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -396,7 +396,7 @@ window.CustomKonvaWrapper = {
 
     CreateTextPathFromJson: function (Configs) {
 
-        var node = new Konva.TextPath(Configs);
+        var node = new Konva.TextPath(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -406,7 +406,7 @@ window.CustomKonvaWrapper = {
 
     CreateTransformFromJson: function (Configs) {
 
-        var node = new Konva.Transform(Configs);
+        var node = new Konva.Transform(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -416,7 +416,7 @@ window.CustomKonvaWrapper = {
 
     CreateTransformerFromJson: function (Configs) {
 
-        var node = new Konva.Transformer(Configs);
+        var node = new Konva.Transformer(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -426,7 +426,7 @@ window.CustomKonvaWrapper = {
 
     CreateTweenFromJson: function (Configs) {
 
-        var node = new Konva.Tween(Configs);
+        var node = new Konva.Tween(JSON.parse(Configs));
 
         this.nodes.push(node);
 
@@ -436,7 +436,7 @@ window.CustomKonvaWrapper = {
 
     CreateWedgeFromJson: function (Configs) {
 
-        var node = new Konva.Wedge(Configs);
+        var node = new Konva.Wedge(JSON.parse(Configs));
 
         this.nodes.push(node);
 

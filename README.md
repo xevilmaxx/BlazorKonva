@@ -25,5 +25,6 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Stage      | V       |
 | Layer      | V       |
 | Rect       | V       |
+| Circle     | V       |
 | --------   | ------- |
 | JS Events  | V       |
