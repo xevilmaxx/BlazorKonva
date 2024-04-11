@@ -1,4 +1,5 @@
-﻿using BlazorKonva.Helpers;
+﻿using BlazorKonva.Enums;
+using BlazorKonva.Helpers;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Stage;
@@ -48,6 +49,15 @@ namespace BlazorKonva.KonvaClasses.Rect
             var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateRectFromJson", ParentLayer.Configs.Id, JSHandler, args);
             //Id = result;
             return this;
+        }
+
+        public async Task<bool> ListenForEvents()
+        {
+            var JSHandler = DotNetObjectReference.Create(this);
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseover, JSHandler, nameof(JsOnMouseOver));
+            var result2 = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseout, JSHandler, nameof(JsOnMouseOut));
+            //Id = result;
+            return result && result2;
         }
 
         /// <summary>

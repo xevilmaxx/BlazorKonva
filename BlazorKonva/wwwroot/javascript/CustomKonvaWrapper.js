@@ -149,13 +149,13 @@ window.CustomKonvaWrapper = {
     CreateLayerFromJson: function (StageId, Configs) {
         //console.log(Configs);
 
-        var stage = this.GetNodeById(StageId);
+        //var stage = this.GetNodeById(StageId);
 
         var layer = new Konva.Layer(JSON.parse(Configs));
 
         this.nodes.push(layer);
 
-        stage.add(layer);
+        //stage.add(layer);
 
         //need also add layer to stage
 
@@ -165,26 +165,26 @@ window.CustomKonvaWrapper = {
 
     CreateRectFromJson: function (LayerId, DotNetObject, Configs) {
 
-        var layer = this.GetNodeById(LayerId);
+        //var layer = this.GetNodeById(LayerId);
 
         //console.log(Configs);
         var box = new Konva.Rect(JSON.parse(Configs));
 
         this.nodes.push(box);
 
-        layer.add(box);
+        //layer.add(box);
 
-        box.on('mouseover', function () {
-            //mouseover(true);
-            //
-            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOver');
-            DotNetObject.invokeMethodAsync('JsOnMouseOver');
-        });
-        box.on('mouseout', function () {
-            //mouseout(true);
-            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOut');
-            DotNetObject.invokeMethodAsync('JsOnMouseOut');
-        });
+        //box.on('mouseover', function () {
+        //    //mouseover(true);
+        //    //
+        //    //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOver');
+        //    DotNetObject.invokeMethodAsync('JsOnMouseOver');
+        //});
+        //box.on('mouseout', function () {
+        //    //mouseout(true);
+        //    //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOut');
+        //    DotNetObject.invokeMethodAsync('JsOnMouseOut');
+        //});
 
         return box.id();
         //return this.stage;
@@ -196,6 +196,18 @@ window.CustomKonvaWrapper = {
         var subNode = this.GetNodeById(DestNodeId);
 
         mainNode.add(subNode);
+
+        return true;
+
+    },
+
+    SubscribeEvent: function (NodeId, JavascriptEvent, DotNetObject, DotNetMethodName) {
+
+        var node = this.GetNodeById(NodeId);
+
+        node.on(JavascriptEvent, function () {
+            DotNetObject.invokeMethodAsync(DotNetMethodName);
+        });
 
         return true;
 

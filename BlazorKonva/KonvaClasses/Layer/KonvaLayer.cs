@@ -1,5 +1,6 @@
 ﻿using BlazorKonva.Helpers;
 using BlazorKonva.KonvaClasses.Node;
+using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.JSInterop;
 
@@ -47,6 +48,19 @@ namespace BlazorKonva.KonvaClasses.Layer
             var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateLayerFromJson", ParentStage.Configs.Id, args);
             //Id = result;
             return this;
+        }
+
+        public async Task<KonvaRect> AddRect(KonvaRectConfigsDTO Data)
+        {
+            var rect = await new KonvaRect()
+                .SetJsRuntime(JS)
+                .SetLayer(this)
+                .SetConfigs(Data)
+                .Build();
+
+            var result = await AddNode(rect);
+
+            return rect;
         }
 
         public async Task<bool> AddNode(KonvaNode Data)

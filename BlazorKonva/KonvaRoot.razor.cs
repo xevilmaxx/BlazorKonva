@@ -42,7 +42,9 @@ namespace BlazorKonva
 
             //await BuildWay0();
 
-            await BuildWay1();
+            //await BuildWay1();
+
+            await BuildWay2();
 
             //await BuildWayRaw();
 
@@ -139,6 +141,37 @@ namespace BlazorKonva
             //var sss2 = rect.GetCastedConfigs();
 
             await layer.AddNode(rect);
+
+        }
+
+        private async Task BuildWay2()
+        {
+
+            var stage = await new KonvaStage()
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaStageConfigsDTO()
+                {
+                    ContainerId = ContainerId,
+                    //Width = 500,
+                    //Height = 500
+                })
+                .Build();
+
+            var layer = await stage.AddLayer(new KonvaLayerConfigsDTO());
+
+            var rect = await layer.AddRect(new KonvaRectConfigsDTO()
+            {
+                X = 50,
+                Y = 50,
+                Width = 100,
+                Height = 50,
+                Fill = "#00D2FF",
+                Stroke = "black",
+                StrokeWidth = 4,
+                Draggable = true
+            });
+
+            await rect.ListenForEvents();
 
         }
 
