@@ -38,7 +38,8 @@ namespace BlazorKonva.KonvaClasses.Layer
 
         public async Task<KonvaLayer> Build()
         {
-            return (KonvaLayer)(await base.Build("CreateLayerFromJson", ParentStage.Configs.Id));
+            //return (KonvaLayer)(await base.Build("CreateLayerFromJson", ParentStage.Configs.Id));
+            return (KonvaLayer)(await base.Build("CreateLayerFromJson"));
         }
 
         public async Task<KonvaRect> AddRect(KonvaRectConfigsDTO Data)

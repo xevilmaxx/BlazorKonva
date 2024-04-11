@@ -146,21 +146,25 @@ window.CustomKonvaWrapper = {
 
     },
 
-    CreateLayerFromJson: function (StageId, Configs) {
+    CreateLayerFromJson: function (Configs) {
         
         var layer = new Konva.Layer(JSON.parse(Configs));
 
         this.nodes.push(layer);
 
+        //will link to parent through AddSubNode() later from C#
+
         return layer.id();
 
     },
 
-    CreateRectFromJson: function (LayerId, Configs) {
+    CreateRectFromJson: function (Configs) {
 
         var box = new Konva.Rect(JSON.parse(Configs));
 
         this.nodes.push(box);
+
+        //will link to parent through AddSubNode() later from C#
 
         return box.id();
 

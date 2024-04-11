@@ -38,7 +38,8 @@ namespace BlazorKonva.KonvaClasses.Rect
 
         public async Task<KonvaRect> Build()
         {
-            return (KonvaRect)(await base.Build("CreateRectFromJson", ParentLayer.Configs.Id));
+            //return (KonvaRect)(await base.Build("CreateRectFromJson", ParentLayer.Configs.Id));
+            return (KonvaRect)(await base.Build("CreateRectFromJson"));
         }
 
         public async Task<bool> ListenForEvents()

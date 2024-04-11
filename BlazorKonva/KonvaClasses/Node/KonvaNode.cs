@@ -29,12 +29,12 @@ namespace BlazorKonva.KonvaClasses.Node
             return this;
         }
 
-        public async Task<KonvaNode> Build(string MethodName, string ParentId)
-        {
-            var args = JsonHelper.Serialize(Configs);
-            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapper.{MethodName}", ParentId, args);
-            return this;
-        }
+        //public async Task<KonvaNode> Build(string MethodName, string ParentId)
+        //{
+        //    var args = JsonHelper.Serialize(Configs);
+        //    var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapper.{MethodName}", ParentId, args);
+        //    return this;
+        //}
 
         public async Task<KonvaNode> Build(string MethodName)
         {
