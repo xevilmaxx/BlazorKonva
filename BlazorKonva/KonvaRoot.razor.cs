@@ -1,14 +1,8 @@
-﻿using BlazorKonva.KonvaClasses;
-using BlazorKonva.KonvaClasses.Layer;
+﻿using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorKonva
 {
@@ -46,9 +40,32 @@ namespace BlazorKonva
 
             await BKW.Init();
 
+            await BuildWay0();
+
+            //await BuildWay1();
+
+            //await BuildWayRaw();
+
+        }
+
+        private async Task BuildWayRaw()
+        {
+
             //_ = await ExampleJsInterop.CreateStage(ContainerId);
 
-            var stage = await new KonvaClasses.Stage.KonvaStage()
+            await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.CreateStage", ContainerId, 100, 100);
+
+            await AddLayer();
+
+            await AddBox();
+
+            var JSHandler = DotNetObjectReference.Create(this);
+            await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.HandleBox", JSHandler);
+        }
+
+        private async Task BuildWay0()
+        {
+            var stage = await new KonvaStage()
                 .SetJsRuntime(BKW.jsRuntime)
                 .SetConfigs(new KonvaStageConfigsDTO()
                 {
@@ -58,7 +75,7 @@ namespace BlazorKonva
                 })
                 .Build();
 
-            var layer = await new KonvaClasses.Layer.KonvaLayer()
+            var layer = await new KonvaLayer()
                 .SetStage(stage)
                 .SetJsRuntime(BKW.jsRuntime)
                 .SetConfigs(new KonvaLayerConfigsDTO())
@@ -79,16 +96,41 @@ namespace BlazorKonva
                     Draggable = true
                 })
                 .Build();
+        }
 
-            //await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.CreateStage", ContainerId, 100, 100);
+        private async Task BuildWay1()
+        {
+            var stage = await new KonvaStage()
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaStageConfigsDTO()
+                {
+                    ContainerId = ContainerId,
+                    //Width = 500,
+                    //Height = 500
+                })
+                .Build();
 
-            //await AddLayer();
+            var layer = await new KonvaLayer()
+                .SetStage(stage)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaLayerConfigsDTO())
+                .Build();
 
-            //await AddBox();
-
-            //var JSHandler = DotNetObjectReference.Create(this);
-            //await BKW.jsRuntime.InvokeAsync<dynamic>("ExampleJsInterop.HandleBox", JSHandler);
-
+            var rect = await new KonvaRect()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaRectConfigsDTO()
+                {
+                    X = 50,
+                    Y = 50,
+                    Width = 100,
+                    Height = 50,
+                    Fill = "#00D2FF",
+                    Stroke = "black",
+                    StrokeWidth = 4,
+                    Draggable = true
+                })
+                .Build();
         }
 
         private async Task AddLayer()

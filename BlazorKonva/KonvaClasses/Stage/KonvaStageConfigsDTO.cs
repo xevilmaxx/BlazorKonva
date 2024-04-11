@@ -1,40 +1,28 @@
-﻿using BlazorKonva.KonvaClasses.Stage;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Xml.Linq;
-using System.Xml;
+﻿using System.Text.Json.Serialization;
 
 namespace BlazorKonva.KonvaClasses.Stage
 {
     public class KonvaStageConfigsDTO
     {
-        
+
         [JsonPropertyName("container")]
         public string ContainerId { get; set; }
-        
+
         [JsonPropertyName("width")]
         public int? Width { get; set; }
-        
+
         [JsonPropertyName("height")]
         public int? Height { get; set; }
 
         [JsonPropertyName("x")]
         public int? X { get; set; }
-        
+
         [JsonPropertyName("y")]
         public int? Y { get; set; }
-        
+
         [JsonPropertyName("visible")]
         public bool? Visible { get; set; }
-        
+
         [JsonPropertyName("listening")]
         public bool? Listening { get; set; }
 
@@ -56,7 +44,7 @@ namespace BlazorKonva.KonvaClasses.Stage
 
         [JsonPropertyName("scaleX")]
         public int? ScaleX { get; set; }
-        
+
         [JsonPropertyName("scaleY")]
         public int? ScaleY { get; set; }
 

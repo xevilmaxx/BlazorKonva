@@ -1,6 +1,5 @@
 ﻿using BlazorKonva;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BlazorKonvaTest.Components.Pages
 {

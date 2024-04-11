@@ -1,8 +1,4 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
-using System.ComponentModel;
-using System.Reflection;
 
 namespace BlazorKonva
 {
@@ -27,6 +23,8 @@ namespace BlazorKonva
         public BlazorKonvaWrapper(IJSRuntime jsRuntime)
         {
             this.jsRuntime = jsRuntime;
+
+            _ = Init();
 
             //_ = jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js");
 
@@ -55,7 +53,7 @@ namespace BlazorKonva
             //Sometimes you simply need to be sure you have saved altered .js file before run
             //becouse it wont be auto-saved by visual studio on normal run
             //overloads of functions are also better to avoid 
-            if(IsIntermediateLibImported == false)
+            if (IsIntermediateLibImported == false)
             {
                 await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js");
                 IsIntermediateLibImported = true;

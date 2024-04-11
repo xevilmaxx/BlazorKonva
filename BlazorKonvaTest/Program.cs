@@ -1,5 +1,5 @@
-using BlazorKonvaTest.Components;
 using BlazorKonva;
+using BlazorKonvaTest.Components;
 using Microsoft.AspNetCore.ResponseCompression;
 
 namespace BlazorKonvaTest
