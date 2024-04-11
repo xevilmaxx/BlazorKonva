@@ -14,7 +14,7 @@ using System.Xml;
 
 namespace BlazorKonva.KonvaClasses.Stage
 {
-    public class StageConfigsDTO
+    public class KonvaStageConfigsDTO
     {
         
         [JsonPropertyName("container")]

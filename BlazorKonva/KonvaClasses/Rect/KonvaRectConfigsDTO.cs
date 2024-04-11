@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlazorKonva.KonvaClasses.Rect
 {
-    public class RectConfigsDTO
+    public class KonvaRectConfigsDTO
     {
         [JsonPropertyName("cornerRadius")]
         public double? CornerRadius { get; set; } // Nullable double

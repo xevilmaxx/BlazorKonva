@@ -9,37 +9,37 @@ using System.Threading.Tasks;
 
 namespace BlazorKonva.KonvaClasses.Rect
 {
-    public class Rect
+    public class KonvaRect
     {
 
-        public RectConfigsDTO Configs { get; set; }
+        public KonvaRectConfigsDTO Configs { get; set; }
 
         private IJSRuntime JS { get; set; }
 
-        public EventHandler OnMouseOverEvt { get; set; }
-        public EventHandler OnMouseOutEvt { get; set; }
+        public EventHandler OnMouseOver { get; set; }
+        public EventHandler OnMouseOut { get; set; }
 
-        private Layer.Layer ParentLayer { get; set; }
+        private KonvaLayer ParentLayer { get; set; }
 
-        public Rect SetLayer(Layer.Layer Data)
+        public KonvaRect SetLayer(KonvaLayer Data)
         {
             ParentLayer = Data;
             return this;
         }
 
-        public Rect SetJsRuntime(IJSRuntime JsRuntime)
+        public KonvaRect SetJsRuntime(IJSRuntime JsRuntime)
         {
             JS = JsRuntime;
             return this;
         }
 
-        public Rect SetConfigs(RectConfigsDTO Data)
+        public KonvaRect SetConfigs(KonvaRectConfigsDTO Data)
         {
             Configs = Data;
             return this;
         }
 
-        public async Task<Rect> Build()
+        public async Task<KonvaRect> Build()
         {
             //var result = AsyncHelper.RunSync(async () => await JS.InvokeAsync<dynamic>("ExampleJsInterop.CreateStage", ContainerId, 100, 100));
             var args = JsonSerializer.Serialize(Configs, new JsonSerializerOptions()
@@ -58,7 +58,7 @@ namespace BlazorKonva.KonvaClasses.Rect
         [JSInvokable]
         public void JsOnMouseOver()
         {
-            OnMouseOverEvt?.Invoke(this, null);
+            OnMouseOver?.Invoke(this, null);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace BlazorKonva.KonvaClasses.Rect
         [JSInvokable]
         public void JsOnMouseOut()
         {
-            OnMouseOutEvt?.Invoke(this, null);
+            OnMouseOut?.Invoke(this, null);
         }
 
     }

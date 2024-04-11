@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlazorKonva.KonvaClasses.Layer
 {
-    public class LayerConfigsDTO
+    public class KonvaLayerConfigsDTO
     {
         [JsonPropertyName("clearBeforeDraw")]
         public bool? ClearBeforeDraw { get; set; } // Nullable boolean

@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace BlazorKonva
 {
-    public partial class KonvaStage : ComponentBase
+    public partial class KonvaRoot : ComponentBase
     {
 
         [Parameter]
-        public string ContainerId { get; set; } = "KonvaContainer";
+        public string ContainerId { get; set; } = Guid.NewGuid().ToString();
 
         [Inject]
         public BlazorKonvaWrapper BKW { get; set; }
@@ -48,9 +48,9 @@ namespace BlazorKonva
 
             //_ = await ExampleJsInterop.CreateStage(ContainerId);
 
-            var stage = await new Stage()
+            var stage = await new KonvaClasses.Stage.KonvaStage()
                 .SetJsRuntime(BKW.jsRuntime)
-                .SetConfigs(new StageConfigsDTO()
+                .SetConfigs(new KonvaStageConfigsDTO()
                 {
                     ContainerId = ContainerId,
                     //Width = 500,
@@ -58,16 +58,16 @@ namespace BlazorKonva
                 })
                 .Build();
 
-            var layer = await new Layer()
+            var layer = await new KonvaClasses.Layer.KonvaLayer()
                 .SetStage(stage)
                 .SetJsRuntime(BKW.jsRuntime)
-                .SetConfigs(new LayerConfigsDTO())
+                .SetConfigs(new KonvaLayerConfigsDTO())
                 .Build();
 
-            var rect = await new Rect()
+            var rect = await new KonvaRect()
                 .SetLayer(layer)
                 .SetJsRuntime(BKW.jsRuntime)
-                .SetConfigs(new RectConfigsDTO()
+                .SetConfigs(new KonvaRectConfigsDTO()
                 {
                     X = 50,
                     Y = 50,

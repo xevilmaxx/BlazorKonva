@@ -1,49 +1,42 @@
-﻿using BlazorKonva.KonvaClasses.Stage;
+﻿using BlazorKonva.Helpers;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace BlazorKonva.KonvaClasses.Layer
+namespace BlazorKonva.KonvaClasses.Stage
 {
-    public class Layer
+    public class KonvaStage
     {
 
-        public LayerConfigsDTO Configs { get; set; }
+        public KonvaStageConfigsDTO Configs { get; set; }
 
         private IJSRuntime JS { get; set; }
 
-        private Stage.Stage ParentStage { get; set; }
-
-        public Layer SetStage(Stage.Stage Data)
-        {
-            ParentStage = Data;
-            return this;
-        }
-
-        public Layer SetJsRuntime(IJSRuntime JsRuntime)
+        public KonvaStage SetJsRuntime(IJSRuntime JsRuntime)
         {
             JS = JsRuntime;
             return this;
         }
 
-        public Layer SetConfigs(LayerConfigsDTO Data)
+        public KonvaStage SetConfigs(KonvaStageConfigsDTO Data)
         {
             Configs = Data;
             return this;
         }
 
-        public async Task<Layer> Build()
+        public async Task<KonvaStage> Build()
         {
             //var result = AsyncHelper.RunSync(async () => await JS.InvokeAsync<dynamic>("ExampleJsInterop.CreateStage", ContainerId, 100, 100));
             var args = JsonSerializer.Serialize(Configs, new JsonSerializerOptions()
             {
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             });
-            var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateLayerFromJson", ParentStage.Configs.Id, args);
+            var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateStageFromJson", args);
             //Id = result;
             return this;
         }
