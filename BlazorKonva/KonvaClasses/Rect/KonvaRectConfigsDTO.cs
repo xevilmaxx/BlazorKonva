@@ -1,8 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using BlazorKonva.KonvaClasses.Node;
+using System.Text.Json.Serialization;
 
 namespace BlazorKonva.KonvaClasses.Rect
 {
-    public class KonvaRectConfigsDTO
+    public class KonvaRectConfigsDTO : KonvaNodeConfigsDTO
     {
         [JsonPropertyName("cornerRadius")]
         public double? CornerRadius { get; set; } // Nullable double
@@ -148,46 +149,46 @@ namespace BlazorKonva.KonvaClasses.Rect
         [JsonPropertyName("dashEnabled")]
         public bool? DashEnabled { get; set; }
 
-        [JsonPropertyName("x")]
-        public double? X { get; set; }
+        //[JsonPropertyName("x")]
+        //public double? X { get; set; }
 
-        [JsonPropertyName("y")]
-        public double? Y { get; set; }
+        //[JsonPropertyName("y")]
+        //public double? Y { get; set; }
 
-        [JsonPropertyName("width")]
-        public double? Width { get; set; }
+        //[JsonPropertyName("width")]
+        //public double? Width { get; set; }
 
-        [JsonPropertyName("height")]
-        public double? Height { get; set; }
+        //[JsonPropertyName("height")]
+        //public double? Height { get; set; }
 
-        [JsonPropertyName("visible")]
-        public bool? Visible { get; set; }
+        //[JsonPropertyName("visible")]
+        //public bool? Visible { get; set; }
 
-        [JsonPropertyName("listening")]
-        public bool? Listening { get; set; }
+        //[JsonPropertyName("listening")]
+        //public bool? Listening { get; set; }
 
-        [JsonPropertyName("id")]
-        public string? Id { get; set; } = Guid.NewGuid().ToString();
+        //[JsonPropertyName("id")]
+        //public string? Id { get; set; } = Guid.NewGuid().ToString();
 
-        [JsonPropertyName("name")]
-        public string? Name { get; set; }
+        //[JsonPropertyName("name")]
+        //public string? Name { get; set; }
 
-        [JsonPropertyName("opacity")]
-        public double? Opacity { get; set; }
+        //[JsonPropertyName("opacity")]
+        //public double? Opacity { get; set; }
 
-        [JsonPropertyName("scale")]
-        public object? Scale { get; set; }
+        //[JsonPropertyName("scale")]
+        //public object? Scale { get; set; }
 
-        [JsonPropertyName("rotation")]
-        public double? Rotation { get; set; }
+        //[JsonPropertyName("rotation")]
+        //public double? Rotation { get; set; }
 
-        [JsonPropertyName("offset")]
-        public object? Offset { get; set; }
+        //[JsonPropertyName("offset")]
+        //public object? Offset { get; set; }
 
-        [JsonPropertyName("draggable")]
-        public bool? Draggable { get; set; }
+        //[JsonPropertyName("draggable")]
+        //public bool? Draggable { get; set; }
 
-        [JsonPropertyName("dragDistance")]
-        public double? DragDistance { get; set; }
+        //[JsonPropertyName("dragDistance")]
+        //public double? DragDistance { get; set; }
     }
 }

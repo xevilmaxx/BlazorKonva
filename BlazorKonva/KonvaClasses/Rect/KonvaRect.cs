@@ -1,13 +1,16 @@
 ﻿using BlazorKonva.Helpers;
 using BlazorKonva.KonvaClasses.Layer;
+using BlazorKonva.KonvaClasses.Node;
+using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.JSInterop;
 
 namespace BlazorKonva.KonvaClasses.Rect
 {
-    public class KonvaRect
+    public class KonvaRect : KonvaNode
     {
 
         public KonvaRectConfigsDTO Configs { get; set; }
+        public override KonvaNodeConfigsDTO CommonConfigs { get; set; }
 
         private IJSRuntime JS { get; set; }
 
@@ -31,6 +34,7 @@ namespace BlazorKonva.KonvaClasses.Rect
         public KonvaRect SetConfigs(KonvaRectConfigsDTO Data)
         {
             Configs = Data;
+            CommonConfigs = Data;
             return this;
         }
 

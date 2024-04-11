@@ -188,6 +188,17 @@ window.CustomKonvaWrapper = {
 
         return box.id();
         //return this.stage;
+    },
+
+    AddSubNode: function (SourceNodeId, DestNodeId) {
+
+        var mainNode = this.GetNodeById(SourceNodeId);
+        var subNode = this.GetNodeById(DestNodeId);
+
+        mainNode.add(subNode);
+
+        return true;
+
     }
 
 }

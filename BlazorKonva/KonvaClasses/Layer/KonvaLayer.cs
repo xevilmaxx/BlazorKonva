@@ -1,13 +1,15 @@
 ﻿using BlazorKonva.Helpers;
+using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.JSInterop;
 
 namespace BlazorKonva.KonvaClasses.Layer
 {
-    public class KonvaLayer
+    public class KonvaLayer : KonvaNode
     {
 
         public KonvaLayerConfigsDTO Configs { get; set; }
+        public override KonvaNodeConfigsDTO CommonConfigs { get; set; }
 
         private IJSRuntime JS { get; set; }
 
@@ -28,6 +30,7 @@ namespace BlazorKonva.KonvaClasses.Layer
         public KonvaLayer SetConfigs(KonvaLayerConfigsDTO Data)
         {
             Configs = Data;
+            CommonConfigs = Data;
             return this;
         }
 
@@ -37,6 +40,13 @@ namespace BlazorKonva.KonvaClasses.Layer
             var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateLayerFromJson", ParentStage.Configs.Id, args);
             //Id = result;
             return this;
+        }
+
+        public async Task<bool> AddNode(KonvaNode Data)
+        {
+            var args = JsonHelper.Serialize(Configs);
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.CommonConfigs.Id);
+            return result;
         }
 
     }

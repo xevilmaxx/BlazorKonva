@@ -40,9 +40,9 @@ namespace BlazorKonva
 
             await BKW.Init();
 
-            await BuildWay0();
+            //await BuildWay0();
 
-            //await BuildWay1();
+            await BuildWay1();
 
             //await BuildWayRaw();
 
@@ -116,6 +116,8 @@ namespace BlazorKonva
                 .SetConfigs(new KonvaLayerConfigsDTO())
                 .Build();
 
+            await stage.AddNode(layer);
+
             var rect = await new KonvaRect()
                 .SetLayer(layer)
                 .SetJsRuntime(BKW.jsRuntime)
@@ -131,6 +133,9 @@ namespace BlazorKonva
                     Draggable = true
                 })
                 .Build();
+
+            await layer.AddNode(rect);
+
         }
 
         private async Task AddLayer()
