@@ -10,30 +10,24 @@ namespace BlazorKonva.KonvaClasses.Rect
     public class KonvaRect : KonvaNode
     {
 
-        public override KonvaNodeConfigsDTO Configs { get; set; }
-
-        private IJSRuntime JS { get; set; }
-
         public EventHandler OnMouseOver { get; set; }
         public EventHandler OnMouseOut { get; set; }
 
         private KonvaLayer ParentLayer { get; set; }
 
-        public KonvaRect SetLayer(KonvaLayer Data)
+        public override KonvaRect SetJsRuntime(IJSRuntime JsRuntime)
         {
-            ParentLayer = Data;
-            return this;
-        }
-
-        public KonvaRect SetJsRuntime(IJSRuntime JsRuntime)
-        {
-            JS = JsRuntime;
-            return this;
+            return (KonvaRect)base.SetJsRuntime(JsRuntime);
         }
 
         public KonvaRect SetConfigs(KonvaRectConfigsDTO Data)
         {
-            Configs = Data;
+            return (KonvaRect)base.SetConfigs(Data);
+        }
+
+        public KonvaRect SetLayer(KonvaLayer Data)
+        {
+            ParentLayer = Data;
             return this;
         }
 
@@ -44,11 +38,7 @@ namespace BlazorKonva.KonvaClasses.Rect
 
         public async Task<KonvaRect> Build()
         {
-            var args = JsonHelper.Serialize(Configs);
-            var JSHandler = DotNetObjectReference.Create(this);
-            var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateRectFromJson", ParentLayer.Configs.Id, JSHandler, args);
-            //Id = result;
-            return this;
+            return (KonvaRect)(await base.Build("CreateRectFromJson", ParentLayer.Configs.Id));
         }
 
         public async Task<bool> ListenForEvents()

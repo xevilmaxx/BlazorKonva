@@ -9,27 +9,21 @@ namespace BlazorKonva.KonvaClasses.Layer
     public class KonvaLayer : KonvaNode
     {
 
-        public override KonvaNodeConfigsDTO Configs { get; set; }
-
-        private IJSRuntime JS { get; set; }
-
         private KonvaStage ParentStage { get; set; }
 
-        public KonvaLayer SetStage(KonvaStage Data)
+        public override KonvaLayer SetJsRuntime(IJSRuntime JsRuntime)
         {
-            ParentStage = Data;
-            return this;
-        }
-
-        public KonvaLayer SetJsRuntime(IJSRuntime JsRuntime)
-        {
-            JS = JsRuntime;
-            return this;
+            return (KonvaLayer)base.SetJsRuntime(JsRuntime);
         }
 
         public KonvaLayer SetConfigs(KonvaLayerConfigsDTO Data)
         {
-            Configs = Data;
+            return (KonvaLayer)base.SetConfigs(Data);
+        }
+
+        public KonvaLayer SetStage(KonvaStage Data)
+        {
+            ParentStage = Data;
             return this;
         }
 
@@ -44,10 +38,7 @@ namespace BlazorKonva.KonvaClasses.Layer
 
         public async Task<KonvaLayer> Build()
         {
-            var args = JsonHelper.Serialize(Configs);
-            var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateLayerFromJson", ParentStage.Configs.Id, args);
-            //Id = result;
-            return this;
+            return (KonvaLayer)(await base.Build("CreateLayerFromJson", ParentStage.Configs.Id));
         }
 
         public async Task<KonvaRect> AddRect(KonvaRectConfigsDTO Data)
@@ -61,13 +52,6 @@ namespace BlazorKonva.KonvaClasses.Layer
             var result = await AddNode(rect);
 
             return rect;
-        }
-
-        public async Task<bool> AddNode(KonvaNode Data)
-        {
-            var args = JsonHelper.Serialize(Configs);
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
-            return result;
         }
 
     }

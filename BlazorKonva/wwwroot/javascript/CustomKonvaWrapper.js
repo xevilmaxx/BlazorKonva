@@ -143,51 +143,27 @@ window.CustomKonvaWrapper = {
         this.nodes.push(stage);
 
         return stage.id();
-        //return this.stage;
+
     },
 
     CreateLayerFromJson: function (StageId, Configs) {
-        //console.log(Configs);
-
-        //var stage = this.GetNodeById(StageId);
-
+        
         var layer = new Konva.Layer(JSON.parse(Configs));
 
         this.nodes.push(layer);
 
-        //stage.add(layer);
-
-        //need also add layer to stage
-
         return layer.id();
-        //return this.stage;
+
     },
 
-    CreateRectFromJson: function (LayerId, DotNetObject, Configs) {
+    CreateRectFromJson: function (LayerId, Configs) {
 
-        //var layer = this.GetNodeById(LayerId);
-
-        //console.log(Configs);
         var box = new Konva.Rect(JSON.parse(Configs));
 
         this.nodes.push(box);
 
-        //layer.add(box);
-
-        //box.on('mouseover', function () {
-        //    //mouseover(true);
-        //    //
-        //    //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOver');
-        //    DotNetObject.invokeMethodAsync('JsOnMouseOver');
-        //});
-        //box.on('mouseout', function () {
-        //    //mouseout(true);
-        //    //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOut');
-        //    DotNetObject.invokeMethodAsync('JsOnMouseOut');
-        //});
-
         return box.id();
-        //return this.stage;
+
     },
 
     AddSubNode: function (SourceNodeId, DestNodeId) {
