@@ -126,6 +126,16 @@ window.CustomKonvaWrapper = {
         return this.nodes.find(node => node.attrs.id === NodeId);
     },
 
+    CreateAnimationFromJson: function (Configs) {
+        
+        var animation = new Konva.Animation(Configs);
+
+        this.nodes.push(animation);
+
+        return animation.id();
+
+    },
+
     CreateStageFromJson: function (Configs) {
         //console.log(Configs);
 

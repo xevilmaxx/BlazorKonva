@@ -15,7 +15,7 @@ namespace BlazorKonva
         [Inject]
         public BlazorKonvaWrapper BKW { get; set; }
 
-        private List<KonvaLayer> Layers { get; set; } = new List<KonvaLayer>();
+        //private List<KonvaLayer> Layers { get; set; } = new List<KonvaLayer>();
 
         [JSInvokable]
         public void OnMouseOver()
