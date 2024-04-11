@@ -8,8 +8,7 @@ namespace BlazorKonva.KonvaClasses.Layer
     public class KonvaLayer : KonvaNode
     {
 
-        public KonvaLayerConfigsDTO Configs { get; set; }
-        public override KonvaNodeConfigsDTO CommonConfigs { get; set; }
+        public override KonvaNodeConfigsDTO Configs { get; set; }
 
         private IJSRuntime JS { get; set; }
 
@@ -30,8 +29,16 @@ namespace BlazorKonva.KonvaClasses.Layer
         public KonvaLayer SetConfigs(KonvaLayerConfigsDTO Data)
         {
             Configs = Data;
-            CommonConfigs = Data;
             return this;
+        }
+
+        /// <summary>
+        /// Will return whole configs as correct to the class
+        /// </summary>
+        /// <returns></returns>
+        public KonvaLayerConfigsDTO GetCastedConfigs()
+        {
+            return (KonvaLayerConfigsDTO)Configs;
         }
 
         public async Task<KonvaLayer> Build()
@@ -45,7 +52,7 @@ namespace BlazorKonva.KonvaClasses.Layer
         public async Task<bool> AddNode(KonvaNode Data)
         {
             var args = JsonHelper.Serialize(Configs);
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.CommonConfigs.Id);
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
             return result;
         }
 

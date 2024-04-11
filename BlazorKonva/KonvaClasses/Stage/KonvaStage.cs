@@ -1,5 +1,6 @@
 ﻿using BlazorKonva.Helpers;
 using BlazorKonva.KonvaClasses.Node;
+using BlazorKonva.KonvaClasses.Rect;
 using Microsoft.JSInterop;
 
 namespace BlazorKonva.KonvaClasses.Stage
@@ -7,8 +8,7 @@ namespace BlazorKonva.KonvaClasses.Stage
     public class KonvaStage : KonvaNode
     {
 
-        public KonvaStageConfigsDTO Configs { get; set; }
-        public override KonvaNodeConfigsDTO CommonConfigs { get; set; }
+        public override KonvaNodeConfigsDTO Configs { get; set; }
 
         private IJSRuntime JS { get; set; }
 
@@ -21,8 +21,12 @@ namespace BlazorKonva.KonvaClasses.Stage
         public KonvaStage SetConfigs(KonvaStageConfigsDTO Data)
         {
             Configs = Data;
-            CommonConfigs = Data;
             return this;
+        }
+
+        public KonvaStageConfigsDTO GetCastedConfigs()
+        {
+            return (KonvaStageConfigsDTO)Configs;
         }
 
         public async Task<KonvaStage> Build()
@@ -35,7 +39,7 @@ namespace BlazorKonva.KonvaClasses.Stage
 
         public async Task<bool> AddNode(KonvaNode Data)
         {
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.CommonConfigs.Id);
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
             return result;
         }
 

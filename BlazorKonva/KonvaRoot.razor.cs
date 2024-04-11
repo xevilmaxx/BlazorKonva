@@ -110,6 +110,8 @@ namespace BlazorKonva
                 })
                 .Build();
 
+            //var sss = stage.GetCastedConfigs();
+
             var layer = await new KonvaLayer()
                 .SetStage(stage)
                 .SetJsRuntime(BKW.jsRuntime)
@@ -133,6 +135,8 @@ namespace BlazorKonva
                     Draggable = true
                 })
                 .Build();
+
+            //var sss2 = rect.GetCastedConfigs();
 
             await layer.AddNode(rect);
 

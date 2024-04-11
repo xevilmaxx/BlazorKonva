@@ -9,8 +9,7 @@ namespace BlazorKonva.KonvaClasses.Rect
     public class KonvaRect : KonvaNode
     {
 
-        public KonvaRectConfigsDTO Configs { get; set; }
-        public override KonvaNodeConfigsDTO CommonConfigs { get; set; }
+        public override KonvaNodeConfigsDTO Configs { get; set; }
 
         private IJSRuntime JS { get; set; }
 
@@ -34,8 +33,12 @@ namespace BlazorKonva.KonvaClasses.Rect
         public KonvaRect SetConfigs(KonvaRectConfigsDTO Data)
         {
             Configs = Data;
-            CommonConfigs = Data;
             return this;
+        }
+
+        public KonvaRectConfigsDTO GetCastedConfigs()
+        {
+            return (KonvaRectConfigsDTO)Configs;
         }
 
         public async Task<KonvaRect> Build()

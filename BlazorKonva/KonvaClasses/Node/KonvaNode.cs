@@ -9,6 +9,6 @@ namespace BlazorKonva.KonvaClasses.Node
 {
     public abstract class KonvaNode
     {
-        public abstract KonvaNodeConfigsDTO CommonConfigs { get; set; }
+        public abstract KonvaNodeConfigsDTO Configs { get; set; }
     }
 }
