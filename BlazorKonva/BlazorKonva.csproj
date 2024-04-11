@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\javascript\konva.min.js">
+    <Content Update="wwwroot\javascript\konva_9_3_6.min.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

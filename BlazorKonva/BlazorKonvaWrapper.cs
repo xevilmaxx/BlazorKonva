@@ -61,7 +61,7 @@ namespace BlazorKonva
 
             if (IsExternalLibImported == false)
             {
-                await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/konva.min.js");
+                await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/konva_9_3_6.min.js");
                 IsExternalLibImported = true;
             }
 
