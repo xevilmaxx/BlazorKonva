@@ -16,6 +16,17 @@ namespace BlazorKonva.KonvaClasses.Rect
 
         private IJSRuntime JS { get; set; }
 
+        public EventHandler OnMouseOverEvt { get; set; }
+        public EventHandler OnMouseOutEvt { get; set; }
+
+        private Layer.Layer ParentLayer { get; set; }
+
+        public Rect SetLayer(Layer.Layer Data)
+        {
+            ParentLayer = Data;
+            return this;
+        }
+
         public Rect SetJsRuntime(IJSRuntime JsRuntime)
         {
             JS = JsRuntime;
@@ -36,22 +47,27 @@ namespace BlazorKonva.KonvaClasses.Rect
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             });
             var JSHandler = DotNetObjectReference.Create(this);
-            var result = await JS.InvokeAsync<dynamic>("ExampleJsInterop.CreateRectFromJson", JSHandler, args);
+            var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateRectFromJson", ParentLayer.Configs.Id, JSHandler, args);
             //Id = result;
             return this;
         }
 
+        /// <summary>
+        /// Only public modifier works, private and others dont, and attribute MUST be specified
+        /// </summary>
         [JSInvokable]
-        public void OnMouseOver()
+        public void JsOnMouseOver()
         {
-
+            OnMouseOverEvt?.Invoke(this, null);
         }
 
-
+        /// <summary>
+        /// Only public modifier works, private and others dont, and attribute MUST be specified
+        /// </summary>
         [JSInvokable]
-        public void OnMouseOut()
+        public void JsOnMouseOut()
         {
-
+            OnMouseOutEvt?.Invoke(this, null);
         }
 
     }

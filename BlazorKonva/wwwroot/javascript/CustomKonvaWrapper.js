@@ -110,3 +110,84 @@ window.ExampleJsInterop = {
     }
 
 }
+
+window.CustomKonvaWrapper = {
+
+    //this is simply genius way to handle arbitrary complex data structure
+    //as soon as everythin in konva seems to be basically a node
+    //we will simply memorize them in plain array of nodes, so we can access to the items later
+    //when needed
+    //in such way we will have gerarchical structure in C# and in Konva
+    //menawhile here we will solve the complexity of finding element once defined by leveraging
+    //fact that we will assign a unique id to each node
+    nodes: [],
+
+    GetNodeById: function (NodeId) {
+        return this.nodes.find(node => node.attrs.id === NodeId);
+    },
+
+    CreateStageFromJson: function (Configs) {
+        //console.log(Configs);
+
+        var parsedConfigs = JSON.parse(Configs)
+
+        if (!parsedConfigs.width || parsedConfigs.width <= 0) {
+            parsedConfigs.width = window.innerWidth;
+        }
+        if (!parsedConfigs.height || parsedConfigs.height <= 0) {
+            parsedConfigs.height = window.innerHeight;
+        }
+
+        var stage = new Konva.Stage(parsedConfigs);
+
+        this.nodes.push(stage);
+
+        return stage.id();
+        //return this.stage;
+    },
+
+    CreateLayerFromJson: function (StageId, Configs) {
+        //console.log(Configs);
+
+        var stage = this.GetNodeById(StageId);
+
+        var layer = new Konva.Layer(JSON.parse(Configs));
+
+        this.nodes.push(layer);
+
+        stage.add(layer);
+
+        //need also add layer to stage
+
+        return layer.id();
+        //return this.stage;
+    },
+
+    CreateRectFromJson: function (LayerId, DotNetObject, Configs) {
+
+        var layer = this.GetNodeById(LayerId);
+
+        //console.log(Configs);
+        var box = new Konva.Rect(JSON.parse(Configs));
+
+        this.nodes.push(box);
+
+        layer.add(box);
+
+        box.on('mouseover', function () {
+            //mouseover(true);
+            //
+            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOver');
+            DotNetObject.invokeMethodAsync('JsOnMouseOver');
+        });
+        box.on('mouseout', function () {
+            //mouseout(true);
+            //DotNet.invokeMethodAsync('BlazorKonva', 'OnMouseOut');
+            DotNetObject.invokeMethodAsync('JsOnMouseOut');
+        });
+
+        return box.id();
+        //return this.stage;
+    }
+
+}

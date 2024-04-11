@@ -59,11 +59,13 @@ namespace BlazorKonva
                 .Build();
 
             var layer = await new Layer()
+                .SetStage(stage)
                 .SetJsRuntime(BKW.jsRuntime)
                 .SetConfigs(new LayerConfigsDTO())
                 .Build();
 
             var rect = await new Rect()
+                .SetLayer(layer)
                 .SetJsRuntime(BKW.jsRuntime)
                 .SetConfigs(new RectConfigsDTO()
                 {

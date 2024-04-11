@@ -36,7 +36,7 @@ namespace BlazorKonva.KonvaClasses.Stage
             {
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             });
-            var result = await JS.InvokeAsync<dynamic>("ExampleJsInterop.CreateStageFromJson", args);
+            var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateStageFromJson", args);
             //Id = result;
             return this;
         }

@@ -16,6 +16,14 @@ namespace BlazorKonva.KonvaClasses.Layer
 
         private IJSRuntime JS { get; set; }
 
+        private Stage.Stage ParentStage { get; set; }
+
+        public Layer SetStage(Stage.Stage Data)
+        {
+            ParentStage = Data;
+            return this;
+        }
+
         public Layer SetJsRuntime(IJSRuntime JsRuntime)
         {
             JS = JsRuntime;
@@ -35,7 +43,7 @@ namespace BlazorKonva.KonvaClasses.Layer
             {
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             });
-            var result = await JS.InvokeAsync<dynamic>("ExampleJsInterop.CreateLayerFromJson", args);
+            var result = await JS.InvokeAsync<dynamic>("CustomKonvaWrapper.CreateLayerFromJson", ParentStage.Configs.Id, args);
             //Id = result;
             return this;
         }
