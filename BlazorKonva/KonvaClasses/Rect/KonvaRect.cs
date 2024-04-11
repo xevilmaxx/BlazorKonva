@@ -1,8 +1,6 @@
 ﻿using BlazorKonva.Enums;
-using BlazorKonva.Helpers;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
-using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.JSInterop;
 
 namespace BlazorKonva.KonvaClasses.Rect

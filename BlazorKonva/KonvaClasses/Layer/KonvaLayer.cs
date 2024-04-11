@@ -1,5 +1,4 @@
-﻿using BlazorKonva.Helpers;
-using BlazorKonva.KonvaClasses.Node;
+﻿using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.JSInterop;
