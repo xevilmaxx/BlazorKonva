@@ -35,7 +35,7 @@ namespace BlazorKonva.KonvaClasses.Node
         /// </summary>
         /// <param name="Data"></param>
         /// <returns></returns>
-        public KonvaNode SetConfigs(KonvaNodeConfigsDTO Data)
+        public virtual KonvaNode SetConfigs(KonvaNodeConfigsDTO Data)
         {
             Configs = Data;
             return this;
@@ -53,7 +53,7 @@ namespace BlazorKonva.KonvaClasses.Node
         /// </summary>
         /// <param name="MethodName"></param>
         /// <returns></returns>
-        public async Task<KonvaNode> Build(string MethodName)
+        public virtual async Task<KonvaNode> Build(string MethodName)
         {
             var args = JsonHelper.Serialize(Configs);
             var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapper.{MethodName}", args);
@@ -65,7 +65,7 @@ namespace BlazorKonva.KonvaClasses.Node
         /// </summary>
         /// <param name="Data"></param>
         /// <returns></returns>
-        public async Task<bool> AddNode(KonvaNode Data)
+        public virtual async Task<bool> AddNode(KonvaNode Data)
         {
             var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
             return result;
