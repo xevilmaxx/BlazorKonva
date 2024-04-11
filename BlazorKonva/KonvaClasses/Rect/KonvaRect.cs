@@ -43,9 +43,14 @@ namespace BlazorKonva.KonvaClasses.Rect
         public async Task<bool> ListenForEvents()
         {
             var JSHandler = DotNetObjectReference.Create(this);
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseover, JSHandler, nameof(JsOnMouseOver));
-            var result2 = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseout, JSHandler, nameof(JsOnMouseOut));
+
+            var result = await base.SubscribeToJsEvent(KonvaJsEvent.Mouseover, JSHandler, nameof(JsOnMouseOver));
+            var result2 = await base.SubscribeToJsEvent(KonvaJsEvent.Mouseout, JSHandler, nameof(JsOnMouseOut));
+
+            //var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseover, JSHandler, nameof(JsOnMouseOver));
+            //var result2 = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseout, JSHandler, nameof(JsOnMouseOut));
             //Id = result;
+
             return result && result2;
         }
 

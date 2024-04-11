@@ -1,4 +1,5 @@
-﻿using BlazorKonva.Helpers;
+﻿using BlazorKonva.Enums;
+using BlazorKonva.Helpers;
 using Microsoft.JSInterop;
 
 namespace BlazorKonva.KonvaClasses.Node
@@ -68,6 +69,16 @@ namespace BlazorKonva.KonvaClasses.Node
         public virtual async Task<bool> AddNode(KonvaNode Data)
         {
             var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
+            return result;
+        }
+
+        /// <summary>
+        /// Allows us receive Javascript events, here you can pass original object eventually
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> SubscribeToJsEvent(string EventType, object JsHandler, string CsharpInvokableMethodName)
+        {
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseover, JsHandler, CsharpInvokableMethodName);
             return result;
         }
 
