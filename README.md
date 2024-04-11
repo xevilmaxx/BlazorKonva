@@ -16,3 +16,14 @@ https://konvajs.org/index.html
 ---
 
 https://unpkg.com/browse/konva@9.3.6/konva.min.js
+
+---
+
+| Class      | Implementation |
+| --------   | ------- |
+| Animation  | ?       |
+| Stage      | V       |
+| Layer      | V       |
+| Rect       | V       |
+| --------   | ------- |
+| JS Events  | V       |
