@@ -126,6 +126,10 @@ window.CustomKonvaWrapper = {
         return this.nodes.find(node => node.attrs.id === NodeId);
     },
 
+    //////////////////////////
+    //EACH CLASS CREATOR IN SAME ORDER AS ON SITE
+    //////////////////////////
+
     CreateAnimationFromJson: function (Configs) {
         
         var animation = new Konva.Animation(Configs);
@@ -133,6 +137,210 @@ window.CustomKonvaWrapper = {
         this.nodes.push(animation);
 
         return animation.id();
+
+    },
+
+    CreateArcFromJson: function (Configs) {
+
+        var node = new Konva.Arc(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateArrowFromJson: function (Configs) {
+
+        var node = new Konva.Arrow(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateCanvasFromJson: function (Configs) {
+
+        var node = new Konva.Canvas(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateCircleFromJson: function (Configs) {
+
+        var node = new Konva.Circle(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateContainerFromJson: function (Configs) {
+
+        var node = new Konva.Container(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateContextFromJson: function (Configs) {
+
+        var node = new Konva.Context(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateEllipseFromJson: function (Configs) {
+
+        var node = new Konva.Ellipse(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateFastLayerFromJson: function (Configs) {
+
+        var node = new Konva.FastLayer(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateGroupFromJson: function (Configs) {
+
+        var node = new Konva.Group(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateImageFromJson: function (Configs) {
+
+        var node = new Konva.Image(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateLabelFromJson: function (Configs) {
+
+        var node = new Konva.Label(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateLayerFromJson: function (Configs) {
+
+        var layer = new Konva.Layer(JSON.parse(Configs));
+
+        this.nodes.push(layer);
+
+        //will link to parent through AddSubNode() later from C#
+
+        return layer.id();
+
+    },
+
+    CreateLineFromJson: function (Configs) {
+
+        var node = new Konva.Line(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateNodeFromJson: function (Configs) {
+
+        var node = new Konva.Node(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreatePathFromJson: function (Configs) {
+
+        var node = new Konva.Path(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateRectFromJson: function (Configs) {
+
+        var box = new Konva.Rect(JSON.parse(Configs));
+
+        this.nodes.push(box);
+
+        //will link to parent through AddSubNode() later from C#
+
+        return box.id();
+
+    },
+
+    CreateRegularPolygonFromJson: function (Configs) {
+
+        var node = new Konva.RegularPolygon(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateRingFromJson: function (Configs) {
+
+        var node = new Konva.Ring(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateShapeFromJson: function (Configs) {
+
+        var node = new Konva.Shape(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateSpriteFromJson: function (Configs) {
+
+        var node = new Konva.Sprite(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
 
     },
 
@@ -156,29 +364,89 @@ window.CustomKonvaWrapper = {
 
     },
 
-    CreateLayerFromJson: function (Configs) {
-        
-        var layer = new Konva.Layer(JSON.parse(Configs));
+    CreateStarFromJson: function (Configs) {
 
-        this.nodes.push(layer);
+        var node = new Konva.Star(Configs);
 
-        //will link to parent through AddSubNode() later from C#
+        this.nodes.push(node);
 
-        return layer.id();
+        return node.id();
 
     },
 
-    CreateRectFromJson: function (Configs) {
+    CreateTagFromJson: function (Configs) {
 
-        var box = new Konva.Rect(JSON.parse(Configs));
+        var node = new Konva.Tag(Configs);
 
-        this.nodes.push(box);
+        this.nodes.push(node);
 
-        //will link to parent through AddSubNode() later from C#
-
-        return box.id();
+        return node.id();
 
     },
+
+    CreateTextFromJson: function (Configs) {
+
+        var node = new Konva.Text(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateTextPathFromJson: function (Configs) {
+
+        var node = new Konva.TextPath(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateTransformFromJson: function (Configs) {
+
+        var node = new Konva.Transform(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateTransformerFromJson: function (Configs) {
+
+        var node = new Konva.Transformer(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateTweenFromJson: function (Configs) {
+
+        var node = new Konva.Tween(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    CreateWedgeFromJson: function (Configs) {
+
+        var node = new Konva.Wedge(Configs);
+
+        this.nodes.push(node);
+
+        return node.id();
+
+    },
+
+    //////////////////////////
+    //CUSTOM MADE FUNCTIONS
+    //////////////////////////
 
     AddSubNode: function (SourceNodeId, DestNodeId) {
 
