@@ -7,6 +7,11 @@ namespace BlazorKonva.KonvaClasses.Node
     public abstract class KonvaNode
     {
 
+        public EventHandler OnMouseOver { get; set; }
+        public EventHandler OnMouseOut { get; set; }
+        public EventHandler OnClick { get; set; }
+        public EventHandler OnContextMenu { get; set; }
+
         /// <summary>
         /// Accessible From every Node (castable to original type)
         /// </summary>
@@ -91,8 +96,72 @@ namespace BlazorKonva.KonvaClasses.Node
         /// <returns></returns>
         public async Task<bool> SubscribeToJsEvent(string EventType, object JsHandler, string CsharpInvokableMethodName)
         {
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, KonvaJsEvent.Mouseover, JsHandler, CsharpInvokableMethodName);
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.SubscribeEvent", Configs.Id, EventType, JsHandler, CsharpInvokableMethodName);
             return result;
+        }
+
+        public async Task<bool> SubscribeToJsEvent(string EventType)
+        {
+            var JsHandler = DotNetObjectReference.Create(this);
+
+            string methodName = "";
+
+            if (EventType == KonvaJsEvent.Mouseover)
+            {
+                methodName = nameof(JsOnMouseOver);
+            }
+            else if (EventType == KonvaJsEvent.Mouseout)
+            {
+                methodName = nameof(JsOnMouseOut);
+            }
+            else if (EventType == KonvaJsEvent.Click)
+            {
+                methodName = nameof(JsOnClick);
+            }
+            else if (EventType == KonvaJsEvent.Contextmenu)
+            {
+                methodName = nameof(JsOnContextMenu);
+            }
+
+            var result = await SubscribeToJsEvent(EventType, JsHandler, methodName);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Only public modifier works, private and others dont, and attribute MUST be specified
+        /// </summary>
+        [JSInvokable]
+        public void JsOnMouseOver()
+        {
+            OnMouseOver?.Invoke(this, null);
+        }
+
+        /// <summary>
+        /// Only public modifier works, private and others dont, and attribute MUST be specified
+        /// </summary>
+        [JSInvokable]
+        public void JsOnMouseOut()
+        {
+            OnMouseOut?.Invoke(this, null);
+        }
+
+        /// <summary>
+        /// Only public modifier works, private and others dont, and attribute MUST be specified
+        /// </summary>
+        [JSInvokable]
+        public void JsOnClick()
+        {
+            OnClick?.Invoke(this, null);
+        }
+
+        /// <summary>
+        /// Only public modifier works, private and others dont, and attribute MUST be specified
+        /// </summary>
+        [JSInvokable]
+        public void JsOnContextMenu()
+        {
+            OnContextMenu?.Invoke(this, null);
         }
 
     }
