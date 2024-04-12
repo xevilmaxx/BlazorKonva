@@ -5,6 +5,7 @@ using BlazorKonva.KonvaClasses.Ellipse;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.RegularPolygon;
+using BlazorKonva.KonvaClasses.Ring;
 using BlazorKonva.KonvaClasses.Stage;
 using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
@@ -286,6 +287,26 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(regularPolygon);
+
+            //////////////////////////////////////////////////////////
+
+            var ring = await new KonvaRing()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaRingConfigsDTO()
+                {
+                    X = 350,
+                    Y = 250,
+                    InnerRadius = 20,
+                    OuterRadius = 20,
+                    Stroke ="red",
+                    StrokeWidth = 5,
+                    Draggable = true,
+                    Opacity = 0.5
+                })
+                .Build();
+
+            await layer.AddNode(ring);
 
         }
 
