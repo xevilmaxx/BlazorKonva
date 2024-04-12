@@ -7,6 +7,7 @@ using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.RegularPolygon;
 using BlazorKonva.KonvaClasses.Ring;
 using BlazorKonva.KonvaClasses.Stage;
+using BlazorKonva.KonvaClasses.Star;
 using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -307,6 +308,27 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(ring);
+
+            //////////////////////////////////////////////////////////
+
+            var star = await new KonvaStar()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaStarConfigsDTO()
+                {
+                    X = 450,
+                    Y = 250,
+                    NumPoints = 7,
+                    InnerRadius = 40,
+                    OuterRadius = 80,
+                    Stroke = "black",
+                    StrokeWidth = 4,
+                    Draggable = true,
+                    Opacity = 0.5
+                })
+                .Build();
+
+            await layer.AddNode(star);
 
         }
 
