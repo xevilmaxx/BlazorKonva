@@ -44,7 +44,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Sprite | |
 | Stage | V |
 | Star | V |
-| Tag | |
+| Tag | ? Insufficient Docs |
 | Text | V |
 | TextPath | |
 | Transform | |
