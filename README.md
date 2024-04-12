@@ -32,7 +32,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | FastLayer | |
 | Group | |
 | Image | |
-| Label | |
+| Label | V |
 | Layer | V |
 | Line | V |
 | Node | V |

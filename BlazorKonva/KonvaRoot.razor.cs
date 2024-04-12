@@ -2,6 +2,7 @@
 using BlazorKonva.KonvaClasses.Arrow;
 using BlazorKonva.KonvaClasses.Circle;
 using BlazorKonva.KonvaClasses.Ellipse;
+using BlazorKonva.KonvaClasses.Label;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.RegularPolygon;
@@ -356,6 +357,21 @@ namespace BlazorKonva
 
             //////////////////////////////////////////////////////////
 
+            var label = await new KonvaLabel()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaLabelConfigsDTO()
+                {
+                    X = 550,
+                    Y = 50,
+                    Draggable = true
+                })
+                .Build();
+
+            await layer.AddNode(label);
+
+            //////////////////////////////////////////////////////////
+
             var text = await new KonvaText()
                 .SetLayer(layer)
                 .SetJsRuntime(BKW.jsRuntime)
@@ -373,6 +389,7 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(text);
+            //await label.AddNode(text);
 
         }
 
