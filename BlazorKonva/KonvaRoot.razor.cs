@@ -1,9 +1,11 @@
 ﻿using BlazorKonva.KonvaClasses.Arc;
 using BlazorKonva.KonvaClasses.Arrow;
 using BlazorKonva.KonvaClasses.Circle;
+using BlazorKonva.KonvaClasses.Ellipse;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
+using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -223,7 +225,7 @@ namespace BlazorKonva
                 {
                     X = 200,
                     Y = 200,
-                    Points = new int[] {73, 70, 340, 23, 450, 60, 500, 20},
+                    Points = new int[] { 73, 70, 340, 23, 450, 60, 500, 20 },
                     Stroke = "red",
                     Tension = 1,
                     PointerLength = 10,
@@ -234,6 +236,26 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(arrow);
+
+            var ellipse = await new KonvaEllipse()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaEllipseConfigsDTO()
+                {
+                    X = 250,
+                    Y = 250,
+                    Radius = new KonvaRadiusDTO()
+                    {
+                        X = 10,
+                        Y = 10
+                    },
+                    Fill = "red",
+                    Draggable = true,
+                    Opacity = 0.75
+                })
+                .Build();
+
+            await layer.AddNode(ellipse);
 
         }
 
