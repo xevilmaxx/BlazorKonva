@@ -46,7 +46,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Star | V |
 | Tag | ? Insufficient Docs |
 | Text | V |
-| TextPath | |
+| TextPath | V (+-) |
 | Transform | |
 | Transformer | |
 | Tween | |

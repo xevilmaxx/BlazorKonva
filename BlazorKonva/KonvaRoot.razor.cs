@@ -10,6 +10,7 @@ using BlazorKonva.KonvaClasses.Ring;
 using BlazorKonva.KonvaClasses.Stage;
 using BlazorKonva.KonvaClasses.Star;
 using BlazorKonva.KonvaClasses.Text;
+using BlazorKonva.KonvaClasses.TextPath;
 using BlazorKonva.KonvaClasses.Wedge;
 using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
@@ -389,7 +390,29 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(text);
+            //also works
             //await label.AddNode(text);
+
+            //////////////////////////////////////////////////////////
+
+            var textPath = await new KonvaTextPath()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaTextPathConfigsDTO()
+                {
+                    X = 550,
+                    Y = 100,
+                    Text = "Hello Konva! [by xevilmaxx]",
+                    FontSize = 20,
+                    FontFamily = "Calibri",
+                    Fill = "green",
+                    Data = "M10,10 C0,0 10,150 100,100 S300,150 400,50",
+                    Draggable = true,
+                    Opacity = 1
+                })
+                .Build();
+
+            await layer.AddNode(textPath);
 
         }
 
