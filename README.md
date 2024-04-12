@@ -29,8 +29,8 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Container | V |
 | Context | ? |
 | Ellipse | V |
-| FastLayer | |
-| Group | |
+| FastLayer | Deprecated in docs, so wont add |
+| Group | +- |
 | Image | |
 | Label | V |
 | Layer | V |
