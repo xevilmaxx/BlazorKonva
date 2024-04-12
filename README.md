@@ -41,7 +41,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | RegularPolygon | V |
 | Ring | V |
 | Shape | V |
-| Sprite | |
+| Sprite | TODO, Created only placeholders |
 | Stage | V |
 | Star | V |
 | Tag | ? Insufficient Docs |
