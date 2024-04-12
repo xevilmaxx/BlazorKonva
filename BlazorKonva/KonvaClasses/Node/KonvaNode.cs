@@ -128,6 +128,9 @@ namespace BlazorKonva.KonvaClasses.Node
             return result;
         }
 
+
+        #region JsInvokables
+
         /// <summary>
         /// Only public modifier works, private and others dont, and attribute MUST be specified
         /// </summary>
@@ -163,6 +166,8 @@ namespace BlazorKonva.KonvaClasses.Node
         {
             OnContextMenu?.Invoke(this, null);
         }
+
+        #endregion
 
     }
 }
