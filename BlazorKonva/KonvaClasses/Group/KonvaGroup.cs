@@ -1,12 +1,6 @@
-﻿using BlazorKonva.KonvaClasses.Circle;
-using BlazorKonva.KonvaClasses.Container;
+﻿using BlazorKonva.KonvaClasses.Container;
 using BlazorKonva.KonvaClasses.Layer;
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorKonva.KonvaClasses.Group
 {
