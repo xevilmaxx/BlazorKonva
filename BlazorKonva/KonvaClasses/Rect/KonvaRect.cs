@@ -1,6 +1,5 @@
 ﻿using BlazorKonva.Enums;
 using BlazorKonva.KonvaClasses.Layer;
-using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Shape;
 using Microsoft.JSInterop;
 

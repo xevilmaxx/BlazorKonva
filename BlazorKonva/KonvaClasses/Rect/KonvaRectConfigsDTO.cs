@@ -1,5 +1,4 @@
-﻿using BlazorKonva.KonvaClasses.Node;
-using BlazorKonva.KonvaClasses.Shape;
+﻿using BlazorKonva.KonvaClasses.Shape;
 using System.Text.Json.Serialization;
 
 namespace BlazorKonva.KonvaClasses.Rect
