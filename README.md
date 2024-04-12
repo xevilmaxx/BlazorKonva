@@ -36,7 +36,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Layer | V |
 | Line | V |
 | Node | V |
-| Path | |
+| Path | V |
 | Rect | V |
 | RegularPolygon | V |
 | Ring | V |

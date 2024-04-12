@@ -5,6 +5,7 @@ using BlazorKonva.KonvaClasses.Ellipse;
 using BlazorKonva.KonvaClasses.Image;
 using BlazorKonva.KonvaClasses.Label;
 using BlazorKonva.KonvaClasses.Layer;
+using BlazorKonva.KonvaClasses.Path;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.RegularPolygon;
 using BlazorKonva.KonvaClasses.Ring;
@@ -432,7 +433,29 @@ namespace BlazorKonva
                 })
                 .Build("./wwwroot/images/caleidoscope.jpg");
 
+            //will be done automatically in this specific case, due to strange way of image initing
+            //this would probably fail or create second registration
             //await layer.AddNode(image);
+
+            //////////////////////////////////////////////////////////
+
+            var path = await new KonvaPath()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaPathConfigsDTO()
+                {
+                    X = 240,
+                    Y = 40,
+                    Data = "M12.582,9.551C3.251,16.237,0.921,29.021,7.08,38.564l-2.36,1.689l4.893,2.262l4.893,2.262l-0.568-5.36l-0.567-5.359l-2.365,1.694c-4.657-7.375-2.83-17.185,4.352-22.33c7.451-5.338,17.817-3.625,23.156,3.824c5.337,7.449,3.625,17.813-3.821,23.152l2.857,3.988c9.617-6.893,11.827-20.277,4.935-29.896C35.591,4.87,22.204,2.658,12.582,9.551z",
+                    Fill = "green",
+                    ScaleX = 2,
+                    ScaleY = 2,
+                    Draggable = true,
+                    Opacity = 0.3
+                })
+                .Build();
+
+            await layer.AddNode(path);
 
         }
 
