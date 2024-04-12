@@ -26,7 +26,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Arrow | V |
 | Canvas | ? Insuff docs (?) |
 | Circle | V |
-| Container | |
+| Container | V |
 | Context | |
 | Ellipse | V |
 | FastLayer | |
