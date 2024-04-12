@@ -68,7 +68,14 @@ namespace BlazorKonva.KonvaClasses.Node
         /// <returns></returns>
         public virtual async Task<bool> AddNode(KonvaNode Data)
         {
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
+            return await AddNode(Data.Configs.Id);
+            //var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
+            //return result;
+        }
+
+        public virtual async Task<bool> AddNode(string DestNodeId)
+        {
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, DestNodeId);
             return result;
         }
 

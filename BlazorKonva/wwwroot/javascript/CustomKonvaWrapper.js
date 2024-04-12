@@ -122,6 +122,13 @@ window.CustomKonvaWrapper = {
     //fact that we will assign a unique id to each node
     nodes: [],
 
+    //transformer has no id propery and is not derived from node
+    //we have 3 ways
+    //simple: assume there can be only 1 transormer active at a time
+    //2: wrap here transformer make this an array as nodes and for each record add ID
+    //3: alter source code of javascript library in order to add id field (yet idk if it can be memorized in nodes array)
+    transformer: null,
+
     GetNodeById: function (NodeId) {
         return this.nodes.find(node => node.attrs.id === NodeId);
     },
@@ -435,13 +442,28 @@ window.CustomKonvaWrapper = {
 
     },
 
-    CreateTransformerFromJson: function (Configs) {
+    CreateTransformerFromJson: function (ParentNodeId, TransformableNodes, Configs) {
 
-        var node = new Konva.Transformer(JSON.parse(Configs));
+        var parsedConfigs = JSON.parse(Configs);
 
-        this.nodes.push(node);
+        if (!parsedConfigs.nodes) {
+            parsedConfigs.nodes = [];
+        }
 
-        return node.id();
+        for (let i = 0; i < TransformableNodes.length; i++) {
+            parsedConfigs.nodes.push(this.GetNodeById(TransformableNodes[i]));
+        }
+
+        var transformer = new Konva.Transformer(parsedConfigs);
+
+        //this.nodes.push(node);
+        this.transformer = transformer;
+
+        var parent = this.GetNodeById(ParentNodeId);
+
+        parent.add(this.transformer);
+
+        return true;
 
     },
 
@@ -468,6 +490,31 @@ window.CustomKonvaWrapper = {
     //////////////////////////
     //CUSTOM MADE FUNCTIONS
     //////////////////////////
+
+    SetTransformerNodes: function (TransformableNodes) {
+
+        var nodes = null;
+        for (let i = 0; i < TransformableNodes.length; i++) {
+            nodes.push(this.GetNodeById(TransformableNodes[i]));
+        }
+
+        this.transformer.nodes(nodes);
+
+        return true;
+
+    },
+
+    RemoveTransformer: function (ParentNodeId) {
+
+        var parent = this.GetNodeById(ParentNodeId);
+
+        parent.remove(this.transformer);
+
+        this.transformer = null;
+
+        return true;
+
+    },
 
     AddSubNode: function (SourceNodeId, DestNodeId) {
 

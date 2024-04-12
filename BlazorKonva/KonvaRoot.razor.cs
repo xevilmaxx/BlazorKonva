@@ -13,6 +13,7 @@ using BlazorKonva.KonvaClasses.Stage;
 using BlazorKonva.KonvaClasses.Star;
 using BlazorKonva.KonvaClasses.Text;
 using BlazorKonva.KonvaClasses.TextPath;
+using BlazorKonva.KonvaClasses.Transformer;
 using BlazorKonva.KonvaClasses.Wedge;
 using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
@@ -456,6 +457,25 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(path);
+
+            //////////////////////////////////////////////////////////
+
+            var transformer = await new KonvaTransformer()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetTransformableNodes(new List<KonvaClasses.Node.KonvaNode>()
+                {
+                    path
+                })
+                .SetConfigs(new KonvaTransformerConfigsDTO()
+                {
+                    RotateAnchorOffset = 60,
+                    EnabledAnchors = new string[] { "top-left", "top-right", "bottom-left", "bottom-right" }
+                })
+                .Build();
+
+            //this is not needed for this calss
+            //await layer.AddNode(transformer.Configs.IgnoreStroke);
 
         }
 
