@@ -1,14 +1,7 @@
-﻿using BlazorKonva.Enums;
-using BlazorKonva.Helpers;
-using BlazorKonva.KonvaClasses.Circle;
+﻿using BlazorKonva.Helpers;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorKonva.KonvaClasses.Transformer
 {
