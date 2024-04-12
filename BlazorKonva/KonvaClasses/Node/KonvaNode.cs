@@ -79,6 +79,12 @@ namespace BlazorKonva.KonvaClasses.Node
             return result;
         }
 
+        public virtual async Task<bool> RemoveNode(string ParentLayerNodeId)
+        {
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.RemoveNode", ParentLayerNodeId, this.Configs.Id);
+            return result;
+        }
+
         /// <summary>
         /// Allows us receive Javascript events, here you can pass original object eventually
         /// </summary>

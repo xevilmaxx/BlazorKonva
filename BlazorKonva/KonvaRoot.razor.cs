@@ -405,7 +405,7 @@ namespace BlazorKonva
                 {
                     X = 550,
                     Y = 100,
-                    Text = "Hello Konva! [by xevilmaxx]",
+                    Text = "Everything is draggable! [by xevilmaxx]",
                     FontSize = 20,
                     FontFamily = "Calibri",
                     Fill = "green",
@@ -416,6 +416,9 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(textPath);
+
+            //if want to test removal
+            //await textPath.RemoveNode(layer.Configs.Id);
 
             //////////////////////////////////////////////////////////
 
@@ -433,6 +436,8 @@ namespace BlazorKonva
                     Opacity = 0.3
                 })
                 .Build("./wwwroot/images/caleidoscope.jpg");
+
+            //await image.RemoveNode(layer.Configs.Id);
 
             //will be done automatically in this specific case, due to strange way of image initing
             //this would probably fail or create second registration

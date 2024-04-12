@@ -8,8 +8,7 @@ window.ExampleJsInterop = {
         return prompt(message, 'Type anything here');
     },
 
-    CreateStage0: function ()
-    {
+    CreateStage0: function () {
         prompt('dasadasdasdasdasdasdasdasdasdasdasdadasdas', 'Type anything here');
     },
 
@@ -138,7 +137,7 @@ window.CustomKonvaWrapper = {
     //////////////////////////
 
     CreateAnimationFromJson: function (Configs) {
-        
+
         var animation = new Konva.Animation(JSON.parse(Configs));
 
         this.nodes.push(animation);
@@ -534,6 +533,40 @@ window.CustomKonvaWrapper = {
         node.on(JavascriptEvent, function () {
             DotNetObject.invokeMethodAsync(DotNetMethodName);
         });
+
+        return true;
+
+    },
+
+    RemoveNode: function (ParentLayerNodeId, DestNodeId) {
+
+        //if (ParentNodeId !== null)
+        //{
+        //    var mainNode = this.GetNodeById(ParentNodeId);
+        //    var subNode = this.GetNodeById(DestNodeId);
+
+        //    subNode.destroy();
+        //    //mainNode.remove(subNode);
+
+        //    //this remove subNode from list
+        //    this.nodes = this.nodes.filter(element => element !== subNode);
+
+        //}
+        //else
+        //{
+
+        var mainNode = this.GetNodeById(ParentLayerNodeId);
+        var subNode = this.GetNodeById(DestNodeId);
+
+        subNode.destroy();
+
+        //this remove subNode from list
+        this.nodes = this.nodes.filter(element => element !== subNode);
+
+        //}
+
+        //redraw
+        mainNode.draw();
 
         return true;
 
