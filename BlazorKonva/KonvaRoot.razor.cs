@@ -1,4 +1,5 @@
-﻿using BlazorKonva.KonvaClasses.Circle;
+﻿using BlazorKonva.KonvaClasses.Arc;
+using BlazorKonva.KonvaClasses.Circle;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
@@ -191,6 +192,28 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(circle);
+
+            var arc = await new KonvaArc()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaArcConfigsDTO()
+                {
+                    Angle = 50,
+                    InnerRadius = 10,
+                    OuterRadius = 10,
+                    X = 200,
+                    Y = 100,
+                    Width = 100,
+                    Height = 100,
+                    Fill = "#00D2FF",
+                    Stroke = "black",
+                    StrokeWidth = 4,
+                    Draggable = true,
+                    Opacity = 0.5
+                })
+                .Build();
+
+            await layer.AddNode(arc);
 
         }
 

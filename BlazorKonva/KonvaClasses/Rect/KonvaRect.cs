@@ -1,11 +1,12 @@
 ﻿using BlazorKonva.Enums;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
+using BlazorKonva.KonvaClasses.Shape;
 using Microsoft.JSInterop;
 
 namespace BlazorKonva.KonvaClasses.Rect
 {
-    public class KonvaRect : KonvaNode
+    public class KonvaRect : KonvaShape
     {
 
         public EventHandler OnMouseOver { get; set; }

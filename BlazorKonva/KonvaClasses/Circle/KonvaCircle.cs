@@ -1,6 +1,7 @@
 ﻿using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Rect;
+using BlazorKonva.KonvaClasses.Shape;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BlazorKonva.KonvaClasses.Circle
 {
-    public class KonvaCircle : KonvaNode
+    public class KonvaCircle : KonvaShape
     {
 
         private KonvaLayer ParentLayer { get; set; }
