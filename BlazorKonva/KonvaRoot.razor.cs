@@ -8,6 +8,7 @@ using BlazorKonva.KonvaClasses.RegularPolygon;
 using BlazorKonva.KonvaClasses.Ring;
 using BlazorKonva.KonvaClasses.Stage;
 using BlazorKonva.KonvaClasses.Star;
+using BlazorKonva.KonvaClasses.Text;
 using BlazorKonva.KonvaClasses.Wedge;
 using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
@@ -301,7 +302,7 @@ namespace BlazorKonva
                     Y = 250,
                     InnerRadius = 20,
                     OuterRadius = 20,
-                    Stroke ="red",
+                    Stroke = "red",
                     StrokeWidth = 5,
                     Draggable = true,
                     Opacity = 0.5
@@ -352,6 +353,26 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(wedge);
+
+            //////////////////////////////////////////////////////////
+
+            var text = await new KonvaText()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaTextConfigsDTO()
+                {
+                    X = 550,
+                    Y = 50,
+                    Text = "Hello Konva! [by xevilmaxx]",
+                    FontSize = 20,
+                    FontFamily = "Calibri",
+                    Fill = "green",
+                    Draggable = true,
+                    Opacity = 1
+                })
+                .Build();
+
+            await layer.AddNode(text);
 
         }
 
