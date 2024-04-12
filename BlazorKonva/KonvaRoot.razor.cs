@@ -8,6 +8,7 @@ using BlazorKonva.KonvaClasses.RegularPolygon;
 using BlazorKonva.KonvaClasses.Ring;
 using BlazorKonva.KonvaClasses.Stage;
 using BlazorKonva.KonvaClasses.Star;
+using BlazorKonva.KonvaClasses.Wedge;
 using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -329,6 +330,28 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(star);
+
+            //////////////////////////////////////////////////////////
+
+            var wedge = await new KonvaWedge()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaWedgeConfigsDTO()
+                {
+                    X = 550,
+                    Y = 250,
+                    Radius = 20,
+                    Angle = 43,
+                    Rotation = 5,
+                    Fill = "red",
+                    Stroke = "black",
+                    StrokeWidth = 2,
+                    Draggable = true,
+                    Opacity = 0.5
+                })
+                .Build();
+
+            await layer.AddNode(wedge);
 
         }
 

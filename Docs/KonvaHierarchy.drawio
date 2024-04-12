@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-04-12T07:53:55.414Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="LE2gGRYUHYAbRB4QmrNK" version="24.1.0" type="device">
+<mxfile host="Electron" modified="2024-04-12T07:58:16.543Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="10BkHrfpc6HEx-4Fgnk-" version="24.1.0" type="device">
   <diagram name="Page-1" id="XTs7JJ6mczBnE6e2hhl9">
     <mxGraphModel dx="2284" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -80,6 +80,12 @@
         </mxCell>
         <mxCell id="9bo8uZbP6z67TJfgycmk-24" value="STAR" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-710" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9bo8uZbP6z67TJfgycmk-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="9bo8uZbP6z67TJfgycmk-26" target="9bo8uZbP6z67TJfgycmk-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9bo8uZbP6z67TJfgycmk-26" value="WEDGE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-850" y="750" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
