@@ -48,8 +48,8 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Text | V |
 | TextPath | V (+-) |
 | Transform | Seems not used outside of Konva.js so will skip |
-| Transformer | |
-| Tween | |
+| Transformer |  |
+| Tween | maybe later |
 | Wedge | V |
 | --------   | ------- |
 | JS Events  | V       |
