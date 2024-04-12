@@ -4,6 +4,7 @@ using BlazorKonva.KonvaClasses.Circle;
 using BlazorKonva.KonvaClasses.Ellipse;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
+using BlazorKonva.KonvaClasses.RegularPolygon;
 using BlazorKonva.KonvaClasses.Stage;
 using BlazorKonva.KonvaCommonDTO;
 using Microsoft.AspNetCore.Components;
@@ -164,6 +165,8 @@ namespace BlazorKonva
 
             var layer = await stage.AddLayer(new KonvaLayerConfigsDTO());
 
+            //////////////////////////////////////////////////////////
+
             var rect = await layer.AddRect(new KonvaRectConfigsDTO()
             {
                 X = 50,
@@ -177,6 +180,8 @@ namespace BlazorKonva
             });
 
             await rect.ListenForEvents();
+
+            //////////////////////////////////////////////////////////
 
             var circle = await new KonvaCircle()
                 .SetLayer(layer)
@@ -195,6 +200,8 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(circle);
+
+            //////////////////////////////////////////////////////////
 
             var arc = await new KonvaArc()
                 .SetLayer(layer)
@@ -218,6 +225,8 @@ namespace BlazorKonva
 
             await layer.AddNode(arc);
 
+            //////////////////////////////////////////////////////////
+
             var arrow = await new KonvaArrow()
                 .SetLayer(layer)
                 .SetJsRuntime(BKW.jsRuntime)
@@ -236,6 +245,8 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(arrow);
+
+            //////////////////////////////////////////////////////////
 
             var ellipse = await new KonvaEllipse()
                 .SetLayer(layer)
@@ -256,6 +267,25 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(ellipse);
+
+            //////////////////////////////////////////////////////////
+
+            var regularPolygon = await new KonvaRegularPolygon()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaRegularPolygonConfigsDTO()
+                {
+                    X = 150,
+                    Y = 250,
+                    Sides = 6,
+                    Radius = 50,
+                    Fill = "#00D2FF",
+                    Draggable = true,
+                    Opacity = 0.5
+                })
+                .Build();
+
+            await layer.AddNode(regularPolygon);
 
         }
 
