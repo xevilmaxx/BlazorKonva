@@ -1,6 +1,4 @@
 ﻿using BlazorKonva.KonvaClasses.Node;
-using System.Numerics;
-using System;
 using System.Text.Json.Serialization;
 
 namespace BlazorKonva.KonvaClasses.Container
@@ -22,6 +20,6 @@ namespace BlazorKonva.KonvaClasses.Container
 
         [JsonPropertyName("clipFunc")]
         public object? ClipFunc { get; set; }
-        
+
     }
 }
