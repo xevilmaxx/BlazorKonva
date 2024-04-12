@@ -53,3 +53,19 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Wedge | V |
 | --------   | ------- |
 | JS Events  | V       |
+
+---
+
+Showcase
+
+---
+
+![Showcase](./Multimedia/Animation.gif)
+
+---
+
+CLASSES STRUCTURE
+
+---
+
+![Classes Structure](./Multimedia/KonvaHierarchy.png)
