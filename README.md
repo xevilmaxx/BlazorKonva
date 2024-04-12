@@ -24,7 +24,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Animation | ? |
 | Arc | V |
 | Arrow | V |
-| Canvas | |
+| Canvas | ? Insuff docs (?) |
 | Circle | V |
 | Container | |
 | Context | |
