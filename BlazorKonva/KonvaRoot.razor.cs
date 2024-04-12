@@ -1,4 +1,5 @@
 ﻿using BlazorKonva.KonvaClasses.Arc;
+using BlazorKonva.KonvaClasses.Arrow;
 using BlazorKonva.KonvaClasses.Circle;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
@@ -214,6 +215,25 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(arc);
+
+            var arrow = await new KonvaArrow()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaArrowConfigsDTO()
+                {
+                    X = 200,
+                    Y = 200,
+                    Points = new int[] {73, 70, 340, 23, 450, 60, 500, 20},
+                    Stroke = "red",
+                    Tension = 1,
+                    PointerLength = 10,
+                    PointerWidth = 12,
+                    Draggable = true,
+                    Opacity = 0.75
+                })
+                .Build();
+
+            await layer.AddNode(arrow);
 
         }
 
