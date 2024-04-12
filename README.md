@@ -27,7 +27,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Canvas | ? Insuff docs (?) |
 | Circle | V |
 | Container | V |
-| Context | |
+| Context | ? |
 | Ellipse | V |
 | FastLayer | |
 | Group | |
