@@ -47,7 +47,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Tag | ? Insufficient Docs |
 | Text | V |
 | TextPath | V (+-) |
-| Transform | |
+| Transform | Seems not used outside of Konva.js so will skip |
 | Transformer | |
 | Tween | |
 | Wedge | V |
