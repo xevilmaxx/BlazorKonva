@@ -2,6 +2,7 @@
 using BlazorKonva.KonvaClasses.Arrow;
 using BlazorKonva.KonvaClasses.Circle;
 using BlazorKonva.KonvaClasses.Ellipse;
+using BlazorKonva.KonvaClasses.Image;
 using BlazorKonva.KonvaClasses.Label;
 using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Rect;
@@ -413,6 +414,25 @@ namespace BlazorKonva
                 .Build();
 
             await layer.AddNode(textPath);
+
+            //////////////////////////////////////////////////////////
+
+            var image = await new KonvaImage()
+                .SetLayer(layer)
+                .SetJsRuntime(BKW.jsRuntime)
+                .SetConfigs(new KonvaImageConfigsDTO()
+                {
+                    X = 550,
+                    Y = 300,
+                    Rotation = 45,
+                    ScaleX = 0.5,
+                    ScaleY = 0.5,
+                    Draggable = true,
+                    Opacity = 0.3
+                })
+                .Build("./wwwroot/images/caleidoscope.jpg");
+
+            //await layer.AddNode(image);
 
         }
 

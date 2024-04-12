@@ -6,8 +6,40 @@ namespace BlazorKonvaTest
 {
     public class Program
     {
+
+        public static void DetectCorrectCurrentDirectory()
+        {
+            try
+            {
+
+                //Block needed to enable correct finding of log folder to store dll logs
+                //dll logs are stored locally in the component as, set_log_path of dll doesnt work
+                string cur_dir = System.IO.Directory.GetCurrentDirectory() + "\\";
+                //log.Debug("Current dir: " + cur_dir);
+                string app_dir = AppDomain.CurrentDomain.BaseDirectory;
+                //log.Debug("App dir: " + app_dir);
+                if (cur_dir.Equals(app_dir))
+                {
+                    //log.Debug("Current directory = App directory. OK");
+                }
+                else
+                {
+                    System.IO.Directory.SetCurrentDirectory(app_dir);
+                    //log.Debug("Altered Current Dir: " + System.IO.Directory.GetCurrentDirectory());
+                }
+            }
+            catch (Exception ex)
+            {
+                //log.Warn(ex, "DetectCorrectCurrentDirectory");
+            }
+        }
+
+
         public static void Main(string[] args)
         {
+
+            DetectCorrectCurrentDirectory();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.

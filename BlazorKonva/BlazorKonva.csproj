@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\images\caleidoscope.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\javascript\konva_9_3_6.min.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>

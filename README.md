@@ -31,7 +31,7 @@ https://unpkg.com/browse/konva@9.3.6/konva.min.js
 | Ellipse | V |
 | FastLayer | Deprecated in docs, so wont add |
 | Group | +- |
-| Image | |
+| Image | V |
 | Label | V |
 | Layer | V |
 | Line | V |

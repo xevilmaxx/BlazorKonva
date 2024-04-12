@@ -230,13 +230,34 @@ window.CustomKonvaWrapper = {
 
     },
 
-    CreateImageFromJson: function (Configs) {
+    CreateImageFromJson: function (ParentId, ImgBase64, ImgFormat, Configs) {
 
-        var node = new Konva.Image(JSON.parse(Configs));
+        //Konva.Image.fromURL(ImagePath, function (darthNode) {
+        //    darthNode.setAttrs(JSON.parse(Configs));
+        //    CustomKonvaWrapper.nodes.push(darthNode);
+        //});
 
-        this.nodes.push(node);
 
-        return node.id();
+        var imageObj = new Image();
+
+        imageObj.onload = function () {
+
+            var parsedConfigs = JSON.parse(Configs);
+
+            parsedConfigs['image'] = imageObj;
+
+            var node = new Konva.Image(parsedConfigs);
+
+            CustomKonvaWrapper.nodes.push(node);
+
+            CustomKonvaWrapper.AddSubNode(ParentId, node.attrs.id);
+
+        };
+
+        //imageObj.src = ImagePath;
+        imageObj.src = 'data:image/' + ImgFormat + ';base64,' + ImgBase64;
+
+        return true;
 
     },
 
