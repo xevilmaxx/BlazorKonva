@@ -482,6 +482,14 @@ namespace BlazorKonva
             //this is not needed for this calss
             //await layer.AddNode(transformer.Configs.IgnoreStroke);
 
+            //////////////////////////////////////////////////////////
+
+            await stage.AttachZoomOnMouseWheel(1.1);
+
+            //await stage.DetachZoomOnMouseWheel();
+
+            //////////////////////////////////////////////////////////
+
         }
 
         private async Task AddLayer()

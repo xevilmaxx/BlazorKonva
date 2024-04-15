@@ -538,6 +538,16 @@ window.CustomKonvaWrapper = {
 
     },
 
+    UnsubscribeEvent: function (NodeId, JavascriptEvent) {
+
+        var node = this.GetNodeById(NodeId);
+
+        node.removeEventListener(JavascriptEvent, null);
+
+        return true;
+
+    },
+
     RemoveNode: function (ParentLayerNodeId, DestNodeId) {
 
         //if (ParentNodeId !== null)
@@ -571,5 +581,69 @@ window.CustomKonvaWrapper = {
         return true;
 
     }
+
+}
+
+window.CustomKonvaWrapperExtensions = {
+
+    //////////////////////////
+    //CUSTOM MADE EXTENDED FUNCTIONALITIES (BEYOND CORE)
+    //////////////////////////
+
+    AttachZoomOnStage: function (StageNodeId, ScaleFactor) {
+
+        var stage = CustomKonvaWrapper.GetNodeById(StageNodeId);
+
+        if (ScaleFactor == null || ScaleFactor <= 0) {
+            ScaleFactor = 1.01;
+        }
+
+        var scaleBy = ScaleFactor;
+
+        stage.on('wheel', (e) => {
+            // stop default scrolling
+            e.evt.preventDefault();
+
+            var oldScale = stage.scaleX();
+            var pointer = stage.getPointerPosition();
+
+            var mousePointTo = {
+                x: (pointer.x - stage.x()) / oldScale,
+                y: (pointer.y - stage.y()) / oldScale,
+            };
+
+            // how to scale? Zoom in? Or zoom out?
+            let direction = e.evt.deltaY > 0 ? 1 : -1;
+
+            // when we zoom on trackpad, e.evt.ctrlKey is true
+            // in that case lets revert direction
+            if (e.evt.ctrlKey) {
+                direction = -direction;
+            }
+
+            var newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
+
+            stage.scale({ x: newScale, y: newScale });
+
+            var newPos = {
+                x: pointer.x - mousePointTo.x * newScale,
+                y: pointer.y - mousePointTo.y * newScale,
+            };
+            stage.position(newPos);
+        });
+
+        return true;
+
+    },
+
+    DetachZoomOnStage: function (StageNodeId) {
+
+        var stage = CustomKonvaWrapper.GetNodeById(StageNodeId);
+
+        stage.removeEventListener('wheel', null);
+
+        return true;
+
+    },
 
 }

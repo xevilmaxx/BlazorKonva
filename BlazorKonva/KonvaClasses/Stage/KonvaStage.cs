@@ -1,6 +1,8 @@
-﻿using BlazorKonva.KonvaClasses.Layer;
+﻿using BlazorKonva.Helpers;
+using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
 using Microsoft.JSInterop;
+using System.Reflection;
 
 namespace BlazorKonva.KonvaClasses.Stage
 {
@@ -38,6 +40,24 @@ namespace BlazorKonva.KonvaClasses.Stage
             var result = await AddNode(layer);
 
             return layer;
+        }
+
+        public async Task<KonvaStage> AttachZoomOnMouseWheel(double? ScaleFactor = null)
+        {
+
+            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapperExtensions.AttachZoomOnStage", Configs.Id, ScaleFactor);
+
+            return this;
+
+        }
+
+        public async Task<KonvaStage> DetachZoomOnMouseWheel()
+        {
+
+            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapperExtensions.DetachZoomOnStage", Configs.Id);
+
+            return this;
+
         }
 
     }
