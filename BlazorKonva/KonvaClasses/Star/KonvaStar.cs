@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Star
     public class KonvaStar : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaStar SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaStar)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Star
 
         public KonvaStar SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

@@ -10,8 +10,6 @@ namespace BlazorKonva.KonvaClasses.Sprite
     public class KonvaSprite : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaSprite SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaSprite)base.SetJsRuntime(JsRuntime);
@@ -24,7 +22,7 @@ namespace BlazorKonva.KonvaClasses.Sprite
 
         public KonvaSprite SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

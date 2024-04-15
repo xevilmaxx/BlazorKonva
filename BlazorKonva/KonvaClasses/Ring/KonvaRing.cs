@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Ring
     public class KonvaRing : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaRing SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaRing)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Ring
 
         public KonvaRing SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

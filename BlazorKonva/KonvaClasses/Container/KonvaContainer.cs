@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Container
     public class KonvaContainer : KonvaNode
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaContainer SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaContainer)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Container
 
         public KonvaContainer SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

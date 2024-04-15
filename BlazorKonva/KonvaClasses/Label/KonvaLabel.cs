@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Label
     public class KonvaLabel : KonvaNode
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaLabel SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaLabel)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Label
 
         public KonvaLabel SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

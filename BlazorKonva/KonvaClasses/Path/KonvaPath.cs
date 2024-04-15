@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Path
     public class KonvaPath : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaPath SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaPath)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Path
 
         public KonvaPath SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

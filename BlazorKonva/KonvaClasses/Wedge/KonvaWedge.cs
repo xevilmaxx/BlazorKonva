@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Wedge
     public class KonvaWedge : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaWedge SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaWedge)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Wedge
 
         public KonvaWedge SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Arrow
     public class KonvaArrow : KonvaLine
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaArrow SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaArrow)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Arrow
 
         public KonvaArrow SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

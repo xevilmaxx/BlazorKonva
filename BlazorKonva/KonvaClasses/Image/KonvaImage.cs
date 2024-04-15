@@ -9,8 +9,6 @@ namespace BlazorKonva.KonvaClasses.Image
     public class KonvaImage : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaImage SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaImage)base.SetJsRuntime(JsRuntime);
@@ -23,7 +21,7 @@ namespace BlazorKonva.KonvaClasses.Image
 
         public KonvaImage SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 
@@ -38,7 +36,7 @@ namespace BlazorKonva.KonvaClasses.Image
 
             var jsReadyImg = ImgToJs.GetBase64Img(ImagePath);
 
-            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapper.CreateImageFromJson", ParentLayer.Configs.Id, jsReadyImg, args);
+            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapper.CreateImageFromJson", ParentNode.Configs.Id, jsReadyImg, args);
             return this;
         }
 

@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Ellipse
     public class KonvaEllipse : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaEllipse SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaEllipse)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Ellipse
 
         public KonvaEllipse SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

@@ -8,8 +8,6 @@ namespace BlazorKonva.KonvaClasses.Layer
     public class KonvaLayer : KonvaNode
     {
 
-        private KonvaStage ParentStage { get; set; }
-
         public override KonvaLayer SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaLayer)base.SetJsRuntime(JsRuntime);
@@ -22,7 +20,7 @@ namespace BlazorKonva.KonvaClasses.Layer
 
         public KonvaLayer SetStage(KonvaStage Data)
         {
-            ParentStage = Data;
+            base.SetParent(Data);
             return this;
         }
 
@@ -56,7 +54,7 @@ namespace BlazorKonva.KonvaClasses.Layer
 
         public async Task<KonvaLayer> AttachObjectSnapper()
         {
-            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapperExtensions.AttachObjectSnapper", ParentStage.Configs.Id, Configs.Id);
+            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapperExtensions.AttachObjectSnapper", ParentNode.Configs.Id, Configs.Id);
             return this;
         }
 

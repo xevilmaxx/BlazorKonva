@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Arc
     public class KonvaArc : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaArc SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaArc)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Arc
 
         public KonvaArc SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

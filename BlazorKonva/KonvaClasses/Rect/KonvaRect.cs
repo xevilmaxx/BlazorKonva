@@ -8,8 +8,6 @@ namespace BlazorKonva.KonvaClasses.Rect
     public class KonvaRect : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaRect SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaRect)base.SetJsRuntime(JsRuntime);
@@ -22,7 +20,7 @@ namespace BlazorKonva.KonvaClasses.Rect
 
         public KonvaRect SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

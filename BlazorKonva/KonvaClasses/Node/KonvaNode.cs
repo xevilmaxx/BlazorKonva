@@ -1,11 +1,15 @@
 ﻿using BlazorKonva.Enums;
 using BlazorKonva.Helpers;
 using Microsoft.JSInterop;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BlazorKonva.KonvaClasses.Node
 {
     public abstract class KonvaNode
     {
+
+        public KonvaNode ParentNode { get; private set; }
+        public List<KonvaNode> ChildrenNodes { get; private set; } = new List<KonvaNode>();
 
         public EventHandler OnMouseOver { get; set; }
         public EventHandler OnMouseOut { get; set; }
@@ -47,6 +51,12 @@ namespace BlazorKonva.KonvaClasses.Node
             return this;
         }
 
+        public virtual KonvaNode SetParent(KonvaNode Data)
+        {
+            ParentNode = Data;
+            return this;
+        }
+
         //public async Task<KonvaNode> Build(string MethodName, string ParentId)
         //{
         //    var args = JsonHelper.Serialize(Configs);
@@ -73,20 +83,30 @@ namespace BlazorKonva.KonvaClasses.Node
         /// <returns></returns>
         public virtual async Task<bool> AddNode(KonvaNode Data)
         {
-            return await AddNode(Data.Configs.Id);
-            //var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
-            //return result;
-        }
-
-        public virtual async Task<bool> AddNode(string DestNodeId)
-        {
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, DestNodeId);
+            ChildrenNodes.Add(Data);
+            //return await AddNode(Data.Configs.Id);
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, Data.Configs.Id);
             return result;
         }
 
-        public virtual async Task<bool> RemoveNode(string ParentLayerNodeId)
+        //public virtual async Task<bool> AddNode(string DestNodeId)
+        //{
+        //    Children.Add(Data);
+        //    var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.AddSubNode", this.Configs.Id, DestNodeId);
+        //    return result;
+        //}
+
+        //public virtual async Task<bool> RemoveNode(string ChildNodeId)
+        //{
+        //    ChildrenNodes.RemoveAll(x => x.Configs.Id == ChildNodeId);
+        //    var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.RemoveNode", this.Configs.Id, ChildNodeId);
+        //    return result;
+        //}
+
+        public virtual async Task<bool> RemoveNode(KonvaNode Data)
         {
-            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.RemoveNode", ParentLayerNodeId, this.Configs.Id);
+            ChildrenNodes.Remove(Data);
+            var result = await JS.InvokeAsync<bool>("CustomKonvaWrapper.RemoveNode", this.Configs.Id, Data.Configs.Id);
             return result;
         }
 

@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.Circle
     public class KonvaCircle : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaCircle SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaCircle)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.Circle
 
         public KonvaCircle SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 

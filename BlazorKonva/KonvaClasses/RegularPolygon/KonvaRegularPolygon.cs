@@ -7,8 +7,6 @@ namespace BlazorKonva.KonvaClasses.RegularPolygon
     public class KonvaRegularPolygon : KonvaShape
     {
 
-        private KonvaLayer ParentLayer { get; set; }
-
         public override KonvaRegularPolygon SetJsRuntime(IJSRuntime JsRuntime)
         {
             return (KonvaRegularPolygon)base.SetJsRuntime(JsRuntime);
@@ -21,7 +19,7 @@ namespace BlazorKonva.KonvaClasses.RegularPolygon
 
         public KonvaRegularPolygon SetLayer(KonvaLayer Data)
         {
-            ParentLayer = Data;
+            base.SetParent(Data);
             return this;
         }
 
