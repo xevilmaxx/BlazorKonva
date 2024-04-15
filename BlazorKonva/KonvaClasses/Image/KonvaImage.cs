@@ -38,7 +38,10 @@ namespace BlazorKonva.KonvaClasses.Image
 
             var imageType = new FileInfo(ImagePath).Extension.Trim('.');
             var imageBase64 = Convert.ToBase64String(File.ReadAllBytes(ImagePath));
-            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapper.CreateImageFromJson", ParentLayer.Configs.Id, imageBase64, imageType, args);
+
+            var jsReadyImg = $"data:image/{imageType};base64,{imageBase64}";
+
+            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapper.CreateImageFromJson", ParentLayer.Configs.Id, jsReadyImg, args);
             return this;
         }
 

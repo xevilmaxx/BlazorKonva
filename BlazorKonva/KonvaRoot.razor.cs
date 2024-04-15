@@ -331,7 +331,8 @@ namespace BlazorKonva
                     Stroke = "black",
                     StrokeWidth = 4,
                     Draggable = true,
-                    Opacity = 0.5
+                    Opacity = 0.5,
+                    FillPatternImage = "./wwwroot/images/caleidoscope.jpg"
                 })
                 .Build();
 
