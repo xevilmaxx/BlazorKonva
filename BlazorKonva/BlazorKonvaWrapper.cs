@@ -55,7 +55,9 @@ namespace BlazorKonva
             //overloads of functions are also better to avoid 
             if (IsIntermediateLibImported == false)
             {
+                await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/ExampleJsInterop.js");
                 await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js");
+                await jsRuntime.InvokeAsync<dynamic>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapperExtensions.js");
                 IsIntermediateLibImported = true;
             }
 
