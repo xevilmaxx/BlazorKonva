@@ -590,6 +590,8 @@ window.CustomKonvaWrapperExtensions = {
     //CUSTOM MADE EXTENDED FUNCTIONALITIES (BEYOND CORE)
     //////////////////////////
 
+    //https://konvajs.org/docs/sandbox/Zooming_Relative_To_Pointer.html
+
     AttachZoomOnStage: function (StageNodeId, ScaleFactor) {
 
         var stage = CustomKonvaWrapper.GetNodeById(StageNodeId);
