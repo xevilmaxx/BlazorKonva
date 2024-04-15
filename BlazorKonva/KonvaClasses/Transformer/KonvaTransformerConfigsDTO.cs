@@ -81,8 +81,14 @@ namespace BlazorKonva.KonvaClasses.Transformer
         [JsonPropertyName("boundBoxFunc")]
         public string? BoundBoxFunc { get; set; }
 
+        /// <summary>
+        /// Custom Javascript function to execute for each frame of the animation
+        /// <para/>
+        /// I dont think you can writea javascript func in c# and auto-translate into javascript easily
+        /// <para/>
+        /// so will leave
         [JsonPropertyName("ignoreStroke")]
-        public object? IgnoreStroke { get; set; }
+        public string? IgnoreStroke { get; set; }
 
         [JsonPropertyName("useSingleNodeRotation")]
         public bool? UseSingleNodeRotation { get; set; }

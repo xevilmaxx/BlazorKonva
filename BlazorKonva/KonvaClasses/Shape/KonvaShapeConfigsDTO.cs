@@ -11,6 +11,11 @@ namespace BlazorKonva.KonvaClasses.Shape
         [JsonPropertyName("fill")]
         public string? Fill { get; set; }
 
+        /// <summary>
+        /// This is tricky one, we cant just pass Image (which is a javascript class in order to reprressent image)
+        /// we can eighter pass image path (but if its similar principle to Image class, probably wont work)
+        /// or pass base64 image and decode and transorm javascript side appropriately
+        /// </summary>
         [JsonPropertyName("fillPatternImage")]
         public object? FillPatternImage { get; set; }
 
