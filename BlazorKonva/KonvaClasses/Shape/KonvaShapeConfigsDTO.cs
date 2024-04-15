@@ -1,4 +1,5 @@
 ﻿using BlazorKonva.KonvaClasses.Node;
+using BlazorKonva.KonvaCommonDTO;
 using System.Drawing;
 using System.Text.Json.Serialization;
 
@@ -20,7 +21,7 @@ namespace BlazorKonva.KonvaClasses.Shape
         public int? FillPatternY { get; set; }
 
         [JsonPropertyName("fillPatternOffset")]
-        public object? FillPatternOffset { get; set; }
+        public KonvaOffsetDTO? FillPatternOffset { get; set; }
 
         [JsonPropertyName("fillPatternOffsetX")]
         public int? FillPatternOffsetX { get; set; }
@@ -29,7 +30,7 @@ namespace BlazorKonva.KonvaClasses.Shape
         public int? FillPatternOffsetY { get; set; }
 
         [JsonPropertyName("fillPatternScale")]
-        public object? FillPatternScale { get; set; }
+        public KonvaScaleDTO? FillPatternScale { get; set; }
 
         [JsonPropertyName("fillPatternScaleX")]
         public int? FillPatternScaleX { get; set; }
@@ -47,7 +48,7 @@ namespace BlazorKonva.KonvaClasses.Shape
         public string? FillPatternRepeat { get; set; }
 
         [JsonPropertyName("FillLinearGradientStartPoint")]
-        public object? FillLinearGradientStartPoint { get; set; }
+        public KonvaFillLinearGradientDTO? FillLinearGradientStartPoint { get; set; }
 
         [JsonPropertyName("fillLinearGradientStartPointX")]
         public int? FillLinearGradientStartPointX { get; set; }
@@ -56,7 +57,7 @@ namespace BlazorKonva.KonvaClasses.Shape
         public int? FillLinearGradientStartPointY { get; set; }
 
         [JsonPropertyName("fillLinearGradientEndPoint")]
-        public Point? FillLinearGradientEndPoint { get; set; }
+        public KonvaFillLinearGradientDTO? FillLinearGradientEndPoint { get; set; }
 
         [JsonPropertyName("fillLinearGradientEndPointX")]
         public double? FillLinearGradientEndPointX { get; set; }
@@ -65,10 +66,10 @@ namespace BlazorKonva.KonvaClasses.Shape
         public double? FillLinearGradientEndPointY { get; set; }
 
         [JsonPropertyName("fillLinearGradientColorStops")]
-        public object[]? FillLinearGradientColorStops { get; set; }
+        public KonvaFillRadialGradientDTO[]? FillLinearGradientColorStops { get; set; }
 
         [JsonPropertyName("fillRadialGradientStartPoint")]
-        public object? FillRadialGradientStartPoint { get; set; }
+        public KonvaFillRadialGradientDTO? FillRadialGradientStartPoint { get; set; }
 
         [JsonPropertyName("fillRadialGradientStartPointX")]
         public double? FillRadialGradientStartPointX { get; set; }
@@ -77,7 +78,7 @@ namespace BlazorKonva.KonvaClasses.Shape
         public double? FillRadialGradientStartPointY { get; set; }
 
         [JsonPropertyName("fillRadialGradientEndPoint")]
-        public object? FillRadialGradientEndPoint { get; set; }
+        public KonvaFillRadialGradientDTO? FillRadialGradientEndPoint { get; set; }
 
         [JsonPropertyName("fillRadialGradientEndPointX")]
         public double? FillRadialGradientEndPointX { get; set; }
@@ -92,7 +93,7 @@ namespace BlazorKonva.KonvaClasses.Shape
         public double? FillRadialGradientEndRadius { get; set; }
 
         [JsonPropertyName("fillRadialGradientColorStops")]
-        public object[]? FillRadialGradientColorStops { get; set; }
+        public KonvaFillRadialGradientDTO[]? FillRadialGradientColorStops { get; set; }
 
         [JsonPropertyName("fillEnabled")]
         public bool? FillEnabled { get; set; }
@@ -140,7 +141,7 @@ namespace BlazorKonva.KonvaClasses.Shape
         public int? ShadowBlur { get; set; }
 
         [JsonPropertyName("shadowOffset")]
-        public object? ShadowOffset { get; set; }
+        public KonvaShadowOffsetDTO? ShadowOffset { get; set; }
 
         [JsonPropertyName("shadowOffsetX")]
         public int? ShadowOffsetX { get; set; }

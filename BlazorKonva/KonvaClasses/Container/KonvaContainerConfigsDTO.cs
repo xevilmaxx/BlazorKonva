@@ -18,8 +18,15 @@ namespace BlazorKonva.KonvaClasses.Container
         [JsonPropertyName("clipHeight")]
         public int? ClipHeight { get; set; }
 
+        /// <summary>
+        /// Custom Javascript function to execute for each frame of the animation
+        /// <para/>
+        /// I dont think you can writea javascript func in c# and auto-translate into javascript easily
+        /// <para/>
+        /// so will leave it as string where you can eventually inject a javascript function
+        /// </summary>
         [JsonPropertyName("clipFunc")]
-        public object? ClipFunc { get; set; }
+        public string? ClipFunc { get; set; }
 
     }
 }

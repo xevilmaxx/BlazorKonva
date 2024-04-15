@@ -71,8 +71,15 @@ namespace BlazorKonva.KonvaClasses.Transformer
         [JsonPropertyName("flipEnabled")]
         public bool? FlipEnabled { get; set; }
 
+        /// <summary>
+        /// Custom Javascript function to execute for each frame of the animation
+        /// <para/>
+        /// I dont think you can writea javascript func in c# and auto-translate into javascript easily
+        /// <para/>
+        /// so will leave it as string where you can eventually inject a javascript function
+        /// </summary>
         [JsonPropertyName("boundBoxFunc")]
-        public object? BoundBoxFunc { get; set; }
+        public string? BoundBoxFunc { get; set; }
 
         [JsonPropertyName("ignoreStroke")]
         public object? IgnoreStroke { get; set; }

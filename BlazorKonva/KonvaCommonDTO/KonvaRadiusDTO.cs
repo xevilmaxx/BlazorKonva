@@ -2,12 +2,8 @@
 
 namespace BlazorKonva.KonvaCommonDTO
 {
-    public class KonvaRadiusDTO
+    public class KonvaRadiusDTO : KonvaGenericXyDTO
     {
-        [JsonPropertyName("x")]
-        public int X { get; set; }
 
-        [JsonPropertyName("y")]
-        public int Y { get; set; }
     }
 }

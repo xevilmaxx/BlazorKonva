@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using BlazorKonva.KonvaCommonDTO;
+using System.Text.Json.Serialization;
 
 namespace BlazorKonva.KonvaClasses.Node
 {
@@ -33,7 +34,7 @@ namespace BlazorKonva.KonvaClasses.Node
         public double? Opacity { get; set; }
 
         [JsonPropertyName("scale")]
-        public object? Scale { get; set; }
+        public KonvaScaleDTO? Scale { get; set; }
 
         [JsonPropertyName("scaleX")]
         public double? ScaleX { get; set; }
@@ -45,13 +46,13 @@ namespace BlazorKonva.KonvaClasses.Node
         public double? Rotation { get; set; }
 
         [JsonPropertyName("offset")]
-        public object? Offset { get; set; }
+        public KonvaOffsetDTO? Offset { get; set; }
 
         [JsonPropertyName("offsetX")]
-        public double? OffsetX { get; set; }
+        public int? OffsetX { get; set; }
 
         [JsonPropertyName("offsetY")]
-        public double? OffsetY { get; set; }
+        public int? OffsetY { get; set; }
 
         [JsonPropertyName("draggable")]
         public bool? Draggable { get; set; }
@@ -59,8 +60,15 @@ namespace BlazorKonva.KonvaClasses.Node
         [JsonPropertyName("dragDistance")]
         public double? DragDistance { get; set; }
 
+        /// <summary>
+        /// Custom Javascript function to execute for each frame of the animation
+        /// <para/>
+        /// I dont think you can writea javascript func in c# and auto-translate into javascript easily
+        /// <para/>
+        /// so will leave it as string where you can eventually inject a javascript function
+        /// </summary>
         [JsonPropertyName("dragBoundFunc")]
-        public object? DragBoundFunc { get; set; }
+        public string? DragBoundFunc { get; set; }
 
     }
 }
