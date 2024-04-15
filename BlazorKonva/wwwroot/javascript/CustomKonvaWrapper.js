@@ -538,6 +538,16 @@ window.CustomKonvaWrapper = {
 
     },
 
+    SubscribeEventJs: function (NodeId, JavascriptEvent, JsFunction) {
+
+        var node = this.GetNodeById(NodeId);
+
+        node.on(JavascriptEvent, JsFunction);
+
+        return true;
+
+    },
+
     UnsubscribeEvent: function (NodeId, JavascriptEvent) {
 
         var node = this.GetNodeById(NodeId);
