@@ -643,12 +643,7 @@ window.CustomKonvaWrapperExtensions = {
 
     DetachZoomOnStage: function (StageNodeId) {
 
-        var stage = CustomKonvaWrapper.GetNodeById(StageNodeId);
-
-        //both ways are valid, but we will prefer shorter one
-        //this will unsubscribe from javascript event
-        //stage.removeEventListener('wheel', null);
-        stage.off('wheel');
+        CustomKonvaWrapper.UnsubscribeEvent(StageNodeId, 'wheel');
 
         return true;
 
