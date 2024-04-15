@@ -20,14 +20,16 @@ namespace BlazorKonva.KonvaClasses.Shape
         /// or pass base64 image and decode and transorm javascript side appropriately
         /// </summary>
         [JsonPropertyName("fillPatternImage")]
-        public string? FillPatternImage { get 
+        public string? FillPatternImage
+        {
+            get
             {
                 return _fillPatternImage;
-            } 
-            set 
+            }
+            set
             {
                 _fillPatternImage = ImgToJs.GetBase64Img(value);
-            } 
+            }
         }
 
         [JsonPropertyName("fillPatternX")]
