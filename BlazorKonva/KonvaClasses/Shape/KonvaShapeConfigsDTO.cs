@@ -1,4 +1,5 @@
-﻿using BlazorKonva.KonvaClasses.Node;
+﻿using BlazorKonva.Helpers;
+using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaCommonDTO;
 using System.Drawing;
 using System.Text.Json.Serialization;
@@ -25,11 +26,7 @@ namespace BlazorKonva.KonvaClasses.Shape
             } 
             set 
             {
-                var imageType = new FileInfo(value).Extension.Trim('.');
-                var imageBase64 = Convert.ToBase64String(File.ReadAllBytes(value));
-
-                var jsReadyImg = $"data:image/{imageType};base64,{imageBase64}";
-                _fillPatternImage = jsReadyImg;
+                _fillPatternImage = ImgToJs.GetBase64Img(value);
             } 
         }
 

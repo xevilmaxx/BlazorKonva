@@ -24,6 +24,8 @@ window.CustomKonvaWrapper = {
         var parsedConfigs = JSON.parse(Configs)
 
         //if we encounter some keys we will replace them with appropriate type
+        //since we cannot pass Image from c# to javascript we will do this transformation if someone passed
+        //such thing
         if (parsedConfigs.fillPatternImage) {
 
             var imageObj = new Image();
@@ -33,6 +35,8 @@ window.CustomKonvaWrapper = {
             //};
             imageObj.src = parsedConfigs.fillPatternImage;
 
+            //instead of string arrived from C#, reassign Image object
+            //so everything is normalized
             parsedConfigs.fillPatternImage = imageObj;
 
         }
