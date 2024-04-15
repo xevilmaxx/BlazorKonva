@@ -1,7 +1,6 @@
 ﻿using BlazorKonva.Helpers;
 using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaCommonDTO;
-using System.Drawing;
 using System.Text.Json.Serialization;
 
 namespace BlazorKonva.KonvaClasses.Shape

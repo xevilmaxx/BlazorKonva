@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace BlazorKonva.KonvaCommonDTO
+﻿namespace BlazorKonva.KonvaCommonDTO
 {
     public class KonvaRadiusDTO : KonvaGenericXyDTO
     {
