@@ -490,6 +490,8 @@ namespace BlazorKonva
 
             //////////////////////////////////////////////////////////
 
+            await layer.AttachObjectSnapper();
+
         }
 
         private async Task AddLayer()

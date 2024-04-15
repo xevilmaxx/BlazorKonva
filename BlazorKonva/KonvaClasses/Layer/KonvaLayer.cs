@@ -2,6 +2,7 @@
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.JSInterop;
+using System.Reflection;
 
 namespace BlazorKonva.KonvaClasses.Layer
 {
@@ -52,6 +53,18 @@ namespace BlazorKonva.KonvaClasses.Layer
             var result = await AddNode(rect);
 
             return rect;
+        }
+
+        public async Task<KonvaLayer> AttachObjectSnapper()
+        {
+            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapperExtensions.AttachObjectSnapper", ParentStage.Configs.Id, Configs.Id);
+            return this;
+        }
+
+        public async Task<KonvaLayer> DetachObjectSnapper()
+        {
+            var result = await JS.InvokeAsync<dynamic>($"CustomKonvaWrapperExtensions.DetachObjectSnapper", Configs.Id);
+            return this;
         }
 
     }
