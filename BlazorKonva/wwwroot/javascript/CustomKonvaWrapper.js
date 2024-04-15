@@ -542,7 +542,10 @@ window.CustomKonvaWrapper = {
 
         var node = this.GetNodeById(NodeId);
 
-        node.removeEventListener(JavascriptEvent, null);
+        //both ways are valid, but we will prefer shorter one
+        //this will unsubscribe from javascript event
+        //node.removeEventListener(JavascriptEvent, null);
+        node.off(JavascriptEvent);
 
         return true;
 
@@ -642,7 +645,10 @@ window.CustomKonvaWrapperExtensions = {
 
         var stage = CustomKonvaWrapper.GetNodeById(StageNodeId);
 
-        stage.removeEventListener('wheel', null);
+        //both ways are valid, but we will prefer shorter one
+        //this will unsubscribe from javascript event
+        //stage.removeEventListener('wheel', null);
+        stage.off('wheel');
 
         return true;
 
