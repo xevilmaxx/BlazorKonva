@@ -30,13 +30,22 @@ namespace BlazorKonva.BlazorComponents
 
         public EventCallback OnParentRendered { get; set; }
 
-        [CascadingParameter]
-        public KonvaNode ParentNode { get; set; }
+        //[CascadingParameter]
+        //public KonvaNode ParentNode { get; set; }
+
+        [CascadingParameter(Name = "TestCascade")]
+        public string TestCascade { get; set; }
 
         private KonvaStage CurStage { get; set; } = new KonvaStage();
 
+        public Stage()
+        {
+            TestCascade = "TestCascade";
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
+            TestCascade = "TestCascade";
             if (firstRender == false)
             {
                 return;
@@ -46,7 +55,7 @@ namespace BlazorKonva.BlazorComponents
 
             Configs.ContainerId = ContainerId;
 
-            ParentNode = CurStage;
+            //ParentNode = CurStage;
 
             await CurStage
                 .SetJsRuntime(JS)

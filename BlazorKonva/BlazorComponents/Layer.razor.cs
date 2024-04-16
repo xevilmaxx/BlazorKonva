@@ -23,11 +23,14 @@ namespace BlazorKonva.BlazorComponents
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
-        [CascadingParameter]
-        public EventCallback OnParentRendered { get; set; }
+        //[CascadingParameter]
+        //public EventCallback OnParentRendered { get; set; }
 
-        [CascadingParameter]
-        public KonvaNode ParentNode { get; set; }
+        //[CascadingParameter]
+        //public KonvaNode ParentNode { get; set; }
+
+        [CascadingParameter(Name = "TestCascade")]
+        public string TestCascade { get; set; }
 
         [Parameter]
         public KonvaLayerConfigsDTO Configs { get; set; }
@@ -36,7 +39,7 @@ namespace BlazorKonva.BlazorComponents
 
         public Layer()
         {
-            OnParentRendered = new EventCallback(this, HandleOnParentRendered);
+            //OnParentRendered = new EventCallback(this, HandleOnParentRendered);
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -46,7 +49,7 @@ namespace BlazorKonva.BlazorComponents
                 return;
             }
 
-            ParentNode = CurLayer;
+            //ParentNode = CurLayer;
 
             //if (OnParentRendered != null)
             //{
@@ -59,7 +62,7 @@ namespace BlazorKonva.BlazorComponents
             await CurLayer
                 .SetJsRuntime(JS)
                 .SetConfigs(Configs)
-                .SetStage((KonvaStage)ParentNode)
+                //.SetStage((KonvaStage)ParentNode)
                 .Build();
         }
 

@@ -11,7 +11,8 @@ Welcome to your new app.
 
 ---
 
-@* <BlazorKonva.BlazorComponents.Stage Configs='new BlazorKonva.KonvaClasses.Stage.KonvaStageConfigsDTO(){Width = 300, Height = 300}'>
+@* <CascadingValue TValue="string" Value="@("testc")" Name="TestCascade"> *@
+<BlazorKonva.BlazorComponents.Stage Configs='new BlazorKonva.KonvaClasses.Stage.KonvaStageConfigsDTO(){Width = 300, Height = 300}'>
     <BlazorKonva.BlazorComponents.Layer Configs="new BlazorKonva.KonvaClasses.Layer.KonvaLayerConfigsDTO(){}">
         <BlazorKonva.BlazorComponents.Rect Configs='new BlazorKonva.KonvaClasses.Rect.KonvaRectConfigsDTO()
 {
@@ -27,4 +28,5 @@ Draggable = true
 
         </BlazorKonva.BlazorComponents.Rect>
     </BlazorKonva.BlazorComponents.Layer>
-</BlazorKonva.BlazorComponents.Stage> *@
+</BlazorKonva.BlazorComponents.Stage>
+@* </CascadingValue> *@
