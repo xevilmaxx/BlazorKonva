@@ -24,7 +24,7 @@ namespace BlazorKonva
         {
             this.jsRuntime = jsRuntime;
 
-            _ = Init();
+            //_ = Init();
 
             //_ = jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BlazorKonva/javascript/CustomKonvaWrapper.js");
 
