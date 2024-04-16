@@ -47,6 +47,12 @@ namespace BlazorKonva.BlazorComponents
                 return;
             }
 
+            await CurNode
+                .SetJsRuntime(JS)
+                .SetConfigs(Configs)
+                //.SetLayer((KonvaLayer)ParentNode)
+                .Build();
+
         }
 
         private async void HandleOnParentRendered()

@@ -1,6 +1,7 @@
 ﻿using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace BlazorKonva.BlazorComponents
         //[CascadingParameter]
         //public KonvaNode ParentNode { get; set; }
 
-        [CascadingParameter(Name = "TestCascade")]
+        //[CascadingParameter(Name = "TestCascade")]
         public string TestCascade { get; set; }
 
         private KonvaStage CurStage { get; set; } = new KonvaStage();

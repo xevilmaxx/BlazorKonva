@@ -29,7 +29,8 @@ namespace BlazorKonva.BlazorComponents
         //[CascadingParameter]
         //public KonvaNode ParentNode { get; set; }
 
-        [CascadingParameter(Name = "TestCascade")]
+        //[CascadingParameter(Name = "TestCascade")]
+        [CascadingParameter]
         public string TestCascade { get; set; }
 
         [Parameter]
@@ -55,6 +56,12 @@ namespace BlazorKonva.BlazorComponents
             //{
             //    OnParentRendered.Invoke(this, null);
             //}
+
+            await CurLayer
+                .SetJsRuntime(JS)
+                .SetConfigs(Configs)
+                //.SetStage((KonvaStage)ParentNode)
+                .Build();
         }
 
         private async void HandleOnParentRendered()
