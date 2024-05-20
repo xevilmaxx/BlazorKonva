@@ -1,3 +1,11 @@
-﻿<div id="@ContainerId">
-    @ChildContent
-</div>
+﻿<CascadingValue Value="CurStage" Name="ParentNode">
+    <CascadingValue Value="OnParentRendered" Name="OnParentRendered">
+        <CascadingValue TValue="string" Value="@("TestCascadeStage")" Name="TestCascade">
+
+            <div id="@ContainerId">
+                @ChildContent
+            </div>
+
+        </CascadingValue>
+    </CascadingValue>
+</CascadingValue>

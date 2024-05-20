@@ -1,4 +1,5 @@
-﻿using BlazorKonva.KonvaClasses.Node;
+﻿using BlazorKonva.Helpers;
+using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -30,23 +31,24 @@ namespace BlazorKonva.BlazorComponents
         public KonvaStageConfigsDTO Configs { get; set; }
 
         public EventCallback OnParentRendered { get; set; }
+        public EventHandler OnParentRendered2 { get; set; }
 
         //[CascadingParameter]
         //public KonvaNode ParentNode { get; set; }
 
         //[CascadingParameter(Name = "TestCascade")]
-        public string TestCascade { get; set; }
+        //public string TestCascade { get; set; }
 
-        private KonvaStage CurStage { get; set; } = new KonvaStage();
+        public KonvaStage CurStage { get; private set; } = new KonvaStage();
 
-        public Stage()
-        {
-            TestCascade = "TestCascade";
-        }
+        //public Stage()
+        //{
+        //    //TestCascade = "TestCascade";
+        //}
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            TestCascade = "TestCascade";
+            //TestCascade = "TestCascade";
             if (firstRender == false)
             {
                 return;
@@ -63,7 +65,11 @@ namespace BlazorKonva.BlazorComponents
                 .SetConfigs(Configs)
                 .Build();
 
-            await OnParentRendered.InvokeAsync();
+            //await OnParentRendered.InvokeAsync();
+
+            //SequencerSingleton.Instance.Value.OnStageLoaded.Invoke(this, null);
+
+            //OnParentRendered2.Invoke(this, null);
         }
 
     }

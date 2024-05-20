@@ -1,1 +1,5 @@
-﻿@ChildContent
+﻿<CascadingValue Value="CurLayer" Name="ParentNode">
+    <CascadingValue TValue="string" Value="@("TestCascadeLayer")" Name="TestCascade">
+        @ChildContent
+    </CascadingValue>
+</CascadingValue>

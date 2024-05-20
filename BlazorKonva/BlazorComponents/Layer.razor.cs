@@ -1,4 +1,5 @@
-﻿using BlazorKonva.KonvaClasses.Layer;
+﻿using BlazorKonva.Helpers;
+using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Stage;
 using Microsoft.AspNetCore.Components;
@@ -23,14 +24,20 @@ namespace BlazorKonva.BlazorComponents
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
-        //[CascadingParameter]
-        //public EventCallback OnParentRendered { get; set; }
+        [CascadingParameter(Name = "OnParentRendered")]
+        public EventCallback OnParentRendered { get; set; }
 
-        //[CascadingParameter]
-        //public KonvaNode ParentNode { get; set; }
+        [CascadingParameter(Name = "OnSetParent")]
+        public EventCallback<KonvaNode> OnSetParent { get; set; }
 
-        //[CascadingParameter(Name = "TestCascade")]
-        [CascadingParameter]
+        [CascadingParameter(Name = "OnParentRendered2")]
+        public EventHandler OnParentRendered2 { get; set; }
+
+        [CascadingParameter(Name = "ParentNode")]
+        public KonvaNode ParentNode { get; set; }
+
+        [CascadingParameter(Name = "TestCascade")]
+        //[CascadingParameter]
         public string TestCascade { get; set; }
 
         [Parameter]
@@ -38,9 +45,25 @@ namespace BlazorKonva.BlazorComponents
 
         private KonvaLayer CurLayer { get; set; } = new KonvaLayer();
 
-        public Layer()
+        protected override void OnInitialized()
         {
+            //OnSetParent = new EventCallback(this, HandleOnParentRendered);
+            //OnSetParent = new EventCallback(this, () =>
+            //{
+            //    ParentNode = g;
+            //});
+
             //OnParentRendered = new EventCallback(this, HandleOnParentRendered);
+            //OnParentRendered2 += (_, _) =>
+            //{
+
+            //};
+
+            //SequencerSingleton.Instance.Value.OnStageLoaded += (_, _) => 
+            //{ 
+            //    HandleOnParentRendered(); 
+            //};
+
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -49,6 +72,8 @@ namespace BlazorKonva.BlazorComponents
             {
                 return;
             }
+
+
 
             //ParentNode = CurLayer;
 
@@ -62,6 +87,9 @@ namespace BlazorKonva.BlazorComponents
                 .SetConfigs(Configs)
                 //.SetStage((KonvaStage)ParentNode)
                 .Build();
+
+            await ParentNode.AddNode(CurLayer);
+
         }
 
         private async void HandleOnParentRendered()
@@ -69,8 +97,9 @@ namespace BlazorKonva.BlazorComponents
             await CurLayer
                 .SetJsRuntime(JS)
                 .SetConfigs(Configs)
-                //.SetStage((KonvaStage)ParentNode)
+                .SetStage((KonvaStage)ParentNode)
                 .Build();
+            SequencerSingleton.Instance.Value.OnLayerLoaded.Invoke(this, null);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using BlazorKonva.KonvaClasses.Layer;
+﻿using BlazorKonva.Helpers;
+using BlazorKonva.KonvaClasses.Layer;
 using BlazorKonva.KonvaClasses.Node;
 using BlazorKonva.KonvaClasses.Rect;
 using BlazorKonva.KonvaClasses.Stage;
@@ -27,6 +28,9 @@ namespace BlazorKonva.BlazorComponents
         [CascadingParameter(Name = "TestCascade")]
         public string TestCascade { get; set; }
 
+        [CascadingParameter(Name = "ParentNode")]
+        public KonvaNode ParentNode { get; set; }
+
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
@@ -38,6 +42,14 @@ namespace BlazorKonva.BlazorComponents
         public Rect()
         {
             //OnParentRendered = new EventCallback(this, HandleOnParentRendered);
+        }
+
+        protected override void OnInitialized()
+        {
+            //SequencerSingleton.Instance.Value.OnLayerLoaded += (_, _) =>
+            //{
+            //    HandleOnParentRendered();
+            //};
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -52,6 +64,8 @@ namespace BlazorKonva.BlazorComponents
                 .SetConfigs(Configs)
                 //.SetLayer((KonvaLayer)ParentNode)
                 .Build();
+
+            await ParentNode.AddNode(CurNode);
 
         }
 
